@@ -1,0 +1,93 @@
+.main{
+	position: relative;
+	width: 100%;
+	background: #333;
+	overflow: hidden;
+	background-size: cover;
+	background-position: center center;
+	z-index: 1;
+  color: #fff;
+  height: 90vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#main{
+   background-image: url('../components/images/background.jpeg');
+}
+
+.canvas {
+   position:absolute;
+   left:0;
+   top:0;
+   z-index:-1;
+}
+
+.container_main {
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.row {
+  margin-right: -15px;
+  margin-left: -15px;
+}
+
+.text_center {
+  text-align: center;
+}
+
+#hello, #name, #person_description, .button_main {
+  font-family: Verdana, Arial, Tahoma, Serif;
+}
+#hello {
+  /* font-family: Verdana, Arial, Tahoma, Serif; */
+  font-size: 3.5rem;
+}
+
+#name {
+  /* font-family: Verdana, Arial, Tahoma, Serif; */
+  font-size: 7.5rem;
+}
+
+#person_description {
+  /* font-family: Verdana, Arial, Tahoma, Serif; */
+  font-size: 2rem;
+}
+
+.banner_buttons {
+  display: flex;
+  justify-content: center;
+    
+}
+
+.button_main {
+  padding: 10px;
+  font-size: 1.5rem;
+  box-shadow: 3px 4px 0px 0px #899599;
+	background-color:transparent;
+	border-radius:15px;
+	border:1px solid #dbd9db;
+	cursor:pointer;
+	font-size:17px;
+  min-width: 100px;
+	text-decoration:none;
+  margin: 10px;
+}
+
+@media only screen and (max-width: 600px) {
+#hello {
+  font-size: 2rem;
+}
+
+#name {
+  font-size: 3.5rem;
+}
+
+#person_description {
+  font-size: 1.2rem;
+}
+}
