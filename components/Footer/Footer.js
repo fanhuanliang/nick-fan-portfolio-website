@@ -1,0 +1,53 @@
+import github from "../images/github.svg";
+import linkedIn from "../images/linkedin.svg";
+import email from "../images/email.svg";
+import Image from "next/image";
+import styleFooter from "../../styles/Footer.module.css";
+
+export default function Footer() {
+  return (
+    <div className={styleFooter.footer}>
+      <div className={styleFooter.container_footer}>
+        <div className={styleFooter.flex_footer}>
+          <div className="github">
+            <a
+              href="https://github.com/fanhuanliang"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Image className="img-responsive" src={github} alt="" />
+            </a>
+          </div>
+
+          <div className="linkedin">
+            <a
+              href="https://www.linkedin.com/in/fanhuanliang/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Image className="img-responsive" src={linkedIn} alt="linkedin" />
+            </a>
+          </div>
+
+          <div className="email-icon">
+            <a
+              href="mailto:fanhuanliang@gmail.com"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Image className="img-responsive" src={email} alt="email" />
+            </a>
+          </div>
+        </div>
+
+        <div className="row">
+          <div className="col-sm-6 col-md-6 text-left">
+            <div className="personal-contact email-personal-contact">
+              <h4>Email: fanhuanliang@gmail.com</h4>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}

@@ -1,0 +1,31 @@
+.projects {
+  background-color: #59585d;
+  padding: 50px;
+  color: white;
+}
+
+.projects h1 {
+  font-family: "Source Sans Pro", Arial, sans-serif;
+  font-size: 3rem;
+  text-align: center;
+}
+
+.project_cards_container {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  justify-content: space-evenly;
+  padding: 50px;  
+}
+
+.project_car_container {
+  background-color: #fff;
+  margin: 5px;
+  padding: 20px;
+  border-radius: 15px;
+  text-align: center;
+  color: rgb(102, 96, 96);
+  width: 380px;
+  box-shadow: 5px 5px 2px 1px rgba(249, 249, 255, 0.2);
+  position: "relative",
+}

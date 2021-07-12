@@ -1,0 +1,22 @@
+.footer {
+  background-color: rgb(255, 255, 255);
+  padding: 50px 0;
+  font-family: "Roboto", Helvetica, serif;
+}
+
+.container_footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.flex_footer {
+  display: flex;
+}
+
+.flex_footer > div {
+  margin: 0px 30px;
+  width: 50px
+}
+
