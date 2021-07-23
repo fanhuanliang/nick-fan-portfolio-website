@@ -7,7 +7,7 @@
 	background-position: center center;
 	z-index: 1;
   color: #fff;
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -65,12 +65,6 @@
 #person_description {
   /* font-family: Verdana, Arial, Tahoma, Serif; */
   font-size: 2rem;
-}
-
-.banner_buttons {
-  /* bottom: 40px;
-  position: absolute;   */
-    
 }
 
 .button_main {
