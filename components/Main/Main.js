@@ -23,6 +23,7 @@ const Main = () => {
           </div>
         </div>
 
+      </div>
         <div className={styleMain.icon}>
           <div className={styleMain.banner_buttons}>
             <Link
@@ -37,7 +38,6 @@ const Main = () => {
             </Link>
           </div>
         </div>
-      </div>
     </div>
   );
 };
