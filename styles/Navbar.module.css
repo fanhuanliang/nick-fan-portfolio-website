@@ -55,6 +55,7 @@
   margin: 0px 20px;
   color: white;
   font-size: 13pt;
+  cursor: pointer;
 }
 
 .primary_nav li > * {
