@@ -1,36 +1,9 @@
 import styleProjects from "../../styles/Projects.module.css";
 import Image from "next/image";
-
+import { projectsData } from './ProjectsData'
 export default function Projects() {
-  const projectsData = [
-    {
-      id: 1,
-      imageLink: "../images/responsivedesign.svg",
-      url: "http://www.google.com",
-      appName: "test1",
-      description: "this is a app",
-      techStacks: ["React", "React Router", "Express", "MongoDB"],
-      github: "github.com",
-    },
-    {
-      id: 2,
-      imageLink: "../images/responsivedesign.svg",
-      url: "google.com",
-      appName: "test2",
-      description: "this is a app",
-      techStacks: ["React", "React Router", "Express", "MongoDB"],
-      github: "github.com",
-    },
-    {
-      id: 3,
-      imageLink: "../images/responsivedesign.svg",
-      url: "google.com",
-      appName: "test3",
-      description: "this is a app",
-      techStacks: ["React", "React Router", "Express", "MongoDB"],
-      github: "github.com",
-    },
-  ];
+  
+  console.log(projectsData)
   return (
     <>
       <div className={styleProjects.projects} id="projects">
@@ -39,18 +12,19 @@ export default function Projects() {
         </div>
 
         <div className={styleProjects.project_cards_container}>
-          {projectsData.map((project) => (
-            <Project key={project.id} project={project} />
+          {projectsData.map((projectsData) => (
+            <Project key={projectsData.id} projectsData={projectsData} />
           ))}
         </div>
       </div>
     </>
   );
 }
-const Project = ({ project }) => {
-  console.log(project.imageLink);
+
+const Project = ({ projectsData }) => {
+  console.log(projectsData.imageLink);
   return (
-    <div className={styleProjects.project_car_container} id="projects" >
+    <div className={styleProjects.project_car_container} id="projects">
       {/* <Image
         className="project_card"
         layout="fill"
@@ -63,11 +37,11 @@ const Project = ({ project }) => {
         src={project.imageLink}
         alt="image_of_project"
       /> */}
-      <a href={project.url}> google</a>
+      <a href={projectsData.url}> google</a>
       <div className="project_card">
-        <h2>{project.appName}</h2>
-        <div>{project.description}</div>
-        <div>{project.techStacks}</div>
+        <h2>{projectsData.appName}</h2>
+        <div>{projectsData.description}</div>
+        <div>{projectsData.techStacks}</div>
       </div>
       <div>
         <button>GitHub</button>
