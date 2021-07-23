@@ -7,15 +7,13 @@
 	background-position: center center;
 	z-index: 1;
   color: #fff;
-  height: 90vh;
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
+
 }
 
-#main{
-   background-image: url('../components/images/background.jpeg');
-}
 
 .canvas {
    position:absolute;
@@ -40,6 +38,12 @@
   text-align: center;
 }
 
+.icon {
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}
+
 #hello, #name, #person_description, .button_main {
   font-family: Verdana, Arial, Tahoma, Serif;
 }
@@ -50,7 +54,9 @@
 
 #name {
   /* font-family: Verdana, Arial, Tahoma, Serif; */
-  font-size: 7.5rem;
+  font-size: 6.5rem;
+  font-family: "Raleway-semibold";
+  color: #7facfafa;
 }
 
 #person_description {
@@ -59,8 +65,8 @@
 }
 
 .banner_buttons {
-  display: flex;
-  justify-content: center;
+  bottom: 20px;
+  position: absolute;  
     
 }
 
@@ -73,9 +79,13 @@
 	border:1px solid #dbd9db;
 	cursor:pointer;
 	font-size:17px;
-  min-width: 100px;
+  min-width: 200px;
 	text-decoration:none;
   margin: 10px;
+}
+.button_main:active {
+	position:relative;
+	top:1px;
 }
 
 @media only screen and (max-width: 600px) {
