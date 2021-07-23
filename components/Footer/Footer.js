@@ -6,7 +6,7 @@ import styleFooter from "../../styles/Footer.module.css";
 
 export default function Footer() {
   return (
-    <div className={styleFooter.footer}>
+    <footer className={styleFooter.footer}>
       <div className={styleFooter.container_footer}>
         <div className={styleFooter.flex_footer}>
           <div className="github">
@@ -48,6 +48,6 @@ export default function Footer() {
           </div>
         </div>
       </div>
-    </div>
+    </footer>
   );
 }

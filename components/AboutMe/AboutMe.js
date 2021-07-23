@@ -1,4 +1,4 @@
-import styleAbout from "../../../styles/About.module.css";
+import styleAbout from "../../styles/About.module.css";
 
 export default function AboutMe() {
   return (
@@ -23,16 +23,6 @@ export default function AboutMe() {
               <br></br>When I am not coding, I enjoy playing basketball,
               cooking, traveling, and playing guitar.
             </p>
-          </div>
-        </div>
-
-        <div className="row">
-          <div className={styleAbout.about_buttons}>
-            <div className="col-sm-2 col-md-2">
-              <a href="#contact" className={styleAbout.about_btn}>
-                Contact
-              </a>
-            </div>
           </div>
         </div>
       </div>

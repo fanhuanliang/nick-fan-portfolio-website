@@ -50,7 +50,7 @@ export default function Projects() {
 const Project = ({ project }) => {
   console.log(project.imageLink);
   return (
-    <div className={styleProjects.project_car_container}>
+    <div className={styleProjects.project_car_container} id="projects" >
       {/* <Image
         className="project_card"
         layout="fill"
