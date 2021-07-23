@@ -1,9 +1,10 @@
 .about {
   padding: 3% 0;
-  background: linear-gradient( rgba(225, 225, 225, 0.94), rgba(225, 225, 225, 0.94) ), url(../components/images/aboutbackground.jpg);
+  background: linear-gradient( rgba(225, 225, 225, 0.94), rgba(225, 225, 225, 0.94));
   background-repeat: no-repeat;
   background-attachment: fixed;
-  background-position: center 
+  background-position: center; 
+  /* height: 100vh; */
 }
 
 .container_about {
@@ -32,30 +33,5 @@
   line-height: 2em;
 }
 
-.about_buttons {
-  display: flex;
-  justify-content: center;
-  margin-top: 60px;
-}
 
-.about_btn {
-  background-color: transparent;
-  width: 100%;
-  color: black;
-  font-family: "Roboto", Helvetica, serif;
-  font-size: 16pt;
-  border-radius: 10px;
-  border: 2px solid black;
-  -webkit-transition: all 200ms ease-out;
-  -moz-transition: all 200ms ease-out;
-  -o-transition: all 200ms ease-out;
-  -ms-transition: all 200ms ease-out;
-  transition: all 200ms ease-out;
-  padding: 10px 40px;
-}
 
-.about_btn:hover {
-  border: 2px solid #464646;
-  background-color: #464646;
-  color: white;
-}
