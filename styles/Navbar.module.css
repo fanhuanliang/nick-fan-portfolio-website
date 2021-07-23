@@ -4,11 +4,52 @@
   background: #58555A;
   position: sticky;
   top: 0px;
+  /* min-height: 68px; */
 }
 
 .primary_nav {
   padding-right: 30px;
 }
+
+.MobileNavigation {
+  display: none;
+}
+
+@media (max-width: 900px) {
+  .Navigation {
+    display: none;
+  }
+
+  .MobileNavigation {
+    min-height: 48px; 
+    display: flex;
+    align-items: center; 
+  }
+
+  .MobileNavigation > div{
+    position: absolute;
+    right: 3%;
+    cursor: pointer;
+  }
+
+  .primary_nav nav ul {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    align-items: center;
+    top: 54px;
+    right: 0;
+    width: 100%;
+    background: rgb(114, 111, 107);
+  }
+  
+  .primary_nav nav ul li {
+    cursor: pointer;
+    padding: 10px;
+  }
+
+}
+
 .primary_nav li {
   display: inline-block;
   margin: 0px 20px;
@@ -25,6 +66,7 @@
   -ms-transition: border 50ms linear;
   transition: border 50ms linear;
 }
+
 .primary_nav a:hover {
   text-decoration: none;
   color: white;
