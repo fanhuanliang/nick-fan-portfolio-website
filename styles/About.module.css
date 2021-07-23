@@ -4,7 +4,7 @@
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: center; 
-  /* height: 100vh; */
+  height: 100vh;
 }
 
 .container_about {
@@ -31,6 +31,8 @@
   font-size: 1.5rem;
   font-family: Comic Sans MS, Verdana, Arial, Tahoma, Serif;;
   line-height: 2em;
+  max-width: 35%;
+  padding-top: 30px;
 }
 
 
