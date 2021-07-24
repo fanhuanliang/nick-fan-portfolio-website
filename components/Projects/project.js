@@ -40,6 +40,7 @@ const Project = ({ projectData }) => {
       </div>
       <div>
         <button onClick={openVideoModal}>Learn more</button>
+        <button onClick={openVideoModal}>Git</button>
       </div>
       <Popup open={isOpenVideo} onClose={() => setIsOpenVideo(false)} />
     </div>
