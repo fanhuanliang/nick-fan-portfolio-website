@@ -1,9 +1,10 @@
 import styleProjects from "../../styles/Projects.module.css";
 import Image from "next/image";
 import { projectsData } from './ProjectsData'
+import Project from './Project'
+
 export default function Projects() {
-  
-  console.log(projectsData)
+  // console.log(projectsData);
   return (
     <>
       <div className={styleProjects.projects} id="projects">
@@ -12,40 +13,11 @@ export default function Projects() {
         </div>
 
         <div className={styleProjects.project_cards_container}>
-          {projectsData.map((projectsData) => (
-            <Project key={projectsData.id} projectsData={projectsData} />
+          {projectsData.map((projectData) => (
+            <Project key={projectData.id} projectData={projectData} />
           ))}
         </div>
       </div>
     </>
   );
 }
-
-const Project = ({ projectsData }) => {
-  console.log(projectsData.imageLink);
-  return (
-    <div className={styleProjects.project_car_container} id="projects">
-      {/* <Image
-        className="project_card"
-        layout="fill"
-        style={{
-          width: "20px",
-          height: "20px",
-          maxHeight: "20px",
-          maxWidth: "20px",
-        }}
-        src={project.imageLink}
-        alt="image_of_project"
-      /> */}
-      <a href={projectsData.url}> google</a>
-      <div className="project_card">
-        <h2>{projectsData.appName}</h2>
-        <div>{projectsData.description}</div>
-        <div>{projectsData.techStacks}</div>
-      </div>
-      <div>
-        <button>GitHub</button>
-      </div>
-    </div>
-  );
-};

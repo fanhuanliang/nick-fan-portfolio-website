@@ -1,0 +1,13 @@
+.project_card_container {
+  background-color: #fff;
+  margin: 5px;
+  padding: 20px;
+  border-radius: 15px;
+  text-align: center;
+  color: rgb(102, 96, 96);
+  width: 380px;
+  box-shadow: 5px 5px 2px 1px rgba(249, 249, 255, 0.2);
+  position: "relative";
+  width: 470px;
+  height: 480px;
+}
