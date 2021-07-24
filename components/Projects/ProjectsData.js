@@ -5,7 +5,7 @@ export const projectsData = [
     deployUrl: "https://payment-system-project-app.herokuapp.com/m",
     appName: "payment-system",
     description:
-      "This is a Full Stack Application by using React, Node.js, Express & MongoDB Atlas. It is a simple project to mimic a 'Funds Transfer' like Venmo. You can query login, sign up, log out, search recipients, and transfer money through this app. Using JWT(JSON Web Tokens) for authentication and authorization.",
+      "A full Stack MERN Application to mimic a 'Funds Transfer' like Venmo, by using JWT for authentication and authorization.",
     techStacks: [
       "JavaScript",
       "React",
@@ -26,7 +26,7 @@ export const projectsData = [
     deployUrl: "",
     appName: "Movie Search App",
     description:
-      "Movie Search Application is a responsive React App using api from OMDb API. Users can search any movie and display the search results. Also, users can register an account or login for storing the favorite movie list.",
+      "Movie Search Application is a responsive React App using api from OMDb API.",
     techStacks: [
       "TypeScript",
       "React",
