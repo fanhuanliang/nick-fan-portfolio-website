@@ -47,6 +47,10 @@
   margin-bottom: 80px;
 }
 
+.icon > div {
+  cursor: pointer;
+}
+
 #hello, #name, #person_description, .button_main {
   font-family: Verdana, Arial, Tahoma, Serif;
 }
