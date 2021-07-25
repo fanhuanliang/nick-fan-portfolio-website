@@ -5,7 +5,6 @@ import Popup from "./Popup"
 import PopImage from "./PopImage"
 
 const Project = ({ projectData }) => {
-  // console.log(projectData);
   const [isOpenVideo, setIsOpenVideo] = useState(false);
   const [isOpenImg, setIsOpenImg] = useState(false);
   const openImgModal = () => {
@@ -33,16 +32,29 @@ const Project = ({ projectData }) => {
         onClose={() => setIsOpenImg(false)}
         urlImg={projectData.imageLink}
       />
-      <div className="project_card">
+      <div className={styleProject.project_card}>
         <h2>{projectData.appName}</h2>
-        <div>{projectData.description}</div>
-        <div>{projectData.techStacks}</div>
+        <p className={styleProject.description}>{projectData.description}</p>
+        <div className={styleProject.tech_stacks}>
+          {projectData.techStacks.map((item, idx) => (
+            <div className={styleProject.tech_stack} key={idx}>
+              {item}
+            </div>
+          ))}
+        </div>
       </div>
-      <div>
-        <button onClick={openVideoModal}>Learn more</button>
-        <button onClick={openVideoModal}>Git</button>
+      <div className={styleProject.button}>
+        <button onClick={openVideoModal}>Video</button>
+        <a href={projectData.github} target="_blank" rel="noopener noreferrer">
+          <button>Git</button>
+        </a>
       </div>
-      <Popup open={isOpenVideo} onClose={() => setIsOpenVideo(false)} />
+      <Popup
+        open={isOpenVideo}
+        onClose={() => setIsOpenVideo(false)}
+        title={projectData.appName}
+        youTubeURL={projectData.youTubeLink}
+      />
     </div>
   );
 };
