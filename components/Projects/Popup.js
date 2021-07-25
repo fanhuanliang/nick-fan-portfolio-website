@@ -1,13 +1,21 @@
-import React from 'react'
+import { useState } from 'react'
 import style from '../../styles/Popup.module.css'
+import ReactPlayer from "react-player";
+import { Icon } from "semantic-ui-react";
 
-const Popup = ({open, onClose}) => {
+const Popup = ({open, onClose, title, youTubeURL}) => {
+  const [isPlaying, setIsPlaying] = useState(true);
   if (!open) return null;
   return (
     <div className={style.bottom_layer}>
-          <div className={style.top_layer}>
-      hello
-      <button onClick={onClose}>X</button>
+      <div className={style.top_layer}>
+        <span onClick={onClose} className={style.close_button}>
+          <Icon name="close" size="big" />
+        </span>
+        <h1>{title}</h1>
+        <div>
+          <ReactPlayer url={youTubeURL} playing={isPlaying} />
+        </div>
       </div>
     </div>
   );
