@@ -53,16 +53,13 @@ const NavLinks = () => {
         </Link>
       </li>
       <li>
-        <Link
-          activeClass="active"
-          to="contact"
-          spy={true}
-          smooth={true}
-          offset={-70}
-          duration={500}
+        <a
+          href="https://drive.google.com/file/d/1WJw7s3kRrJaID6zei3_YBeFPYVGra75-/view?usp=sharing"
+          target="_blank"
+          rel="noopener noreferrer"
         >
           Resume
-        </Link>
+        </a>
       </li>
     </ul>
   );
