@@ -1,11 +1,20 @@
 .contact {
   background-color: #3a3a3a;
-  padding: 50px 150px;
+  /* padding: 50px 150px; */
   color: white;
   text-align: center;
-  min-height: 70vh;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
+.contact > div {
+  width: 50vw;
+}
+.contact_row {
+  padding: 40px;
+}
 .contact input,
 .contact textarea {
   color: black;
@@ -26,6 +35,10 @@
 
 .contact h4 {
   font-size:1.5rem;
+}
+
+.message > textarea{
+  height:  300px
 }
 
 .submit_contact {
