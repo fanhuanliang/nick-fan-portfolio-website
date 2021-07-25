@@ -3,7 +3,7 @@ export const projectsData = [
     id: 1,
     imageLink: "/images/payment-project.png",
     deployUrl: "https://payment-system-project-app.herokuapp.com/m",
-    appName: "payment-system",
+    appName: "Payment-System",
     description:
       "A full Stack MERN Application to mimic a 'Funds Transfer' like Venmo, by using JWT for authentication and authorization.",
     techStacks: [
@@ -54,10 +54,10 @@ export const projectsData = [
     id: 4,
     imageLink: "/images/calculator.png",
     deployUrl: "",
-    appName: "mini-app-calculator",
+    appName: "Mini-App-Calculator",
     description: "Building a mini-app-calculator for fun.",
     techStacks: ["React", "TypeScript"],
     github: "https://github.com/fanhuanliang/mini-app-calculator",
-    youTubeLink: "",
+    youTubeLink: "https://www.youtube.com/watch?v=fSRJMxJAP3c",
   },
 ];
