@@ -40,13 +40,6 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="row">
-          <div className="col-sm-6 col-md-6 text-left">
-            <div className="personal-contact email-personal-contact">
-              <h4>Email: fanhuanliang@gmail.com</h4>
-            </div>
-          </div>
-        </div>
       </div>
     </footer>
   );
