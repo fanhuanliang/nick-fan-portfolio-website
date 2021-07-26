@@ -1,6 +1,6 @@
 import styleProjects from "../../styles/Projects.module.css";
 import { projectsData } from './ProjectsData'
-import ProjectCard from "./ProjectCard";
+import Project from "./Project";
 
 export default function Projects() {
   // console.log(projectsData);
@@ -13,7 +13,7 @@ export default function Projects() {
 
         <div className={styleProjects.project_cards_container}>
           {projectsData.map((projectData) => (
-            <ProjectCard key={projectData.id} projectData={projectData} />
+            <Project key={projectData.id} projectData={projectData} />
           ))}
         </div>
       </div>
