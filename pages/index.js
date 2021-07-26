@@ -3,14 +3,13 @@ import Navbar from "../components/Navbar/Navbar";
 import AboutMe from "../components/AboutMe/AboutMe";
 import Projects from "../components/Projects/Projects";
 import Contact from "../components/Contact/Contact";
-import Footer from "../components/Footer/Footer";
 import Main from "../components/Main/Main";
 import "semantic-ui-css/semantic.min.css";
 
 export default function Home() {
-
+  console.log(process.env.SERVICE_ID)
   return (
-    <div>
+    <>
       <Head>
         <title>My Portfolio</title>
         <meta name="keywords" content="typescript next.js portfolio" />
@@ -21,7 +20,6 @@ export default function Home() {
       <AboutMe />
       <Projects />
       <Contact />
-      {/* <Footer /> */}
-    </div>
+    </>
   );
 }
