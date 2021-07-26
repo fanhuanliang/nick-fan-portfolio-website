@@ -32,3 +32,6 @@ yarn-error.log*
 
 # vercel
 .vercel
+
+#emailjs IDs
+emailjs.config.js
