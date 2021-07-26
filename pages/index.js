@@ -7,7 +7,6 @@ import Main from "../components/Main/Main";
 import "semantic-ui-css/semantic.min.css";
 
 export default function Home() {
-  console.log(process.env.SERVICE_ID)
   return (
     <>
       <Head>
