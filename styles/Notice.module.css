@@ -1,0 +1,30 @@
+.bottom_layer{
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 100;
+}
+
+.top_layer {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgb(9, 248, 252);
+  padding: 50px;
+  z-index: 100;
+  width: 70vw;
+  height: 50vh;
+  border: 1px solid grey;
+  border-radius: 10px;
+  box-shadow: 10px 10px black;
+  display: flex;
+  line-height: 30px;
+  flex-direction: column;
+  align-items: center;
+  overflow: auto;
+  color: rgb(13, 1, 250);
+  justify-content: center;
+}
