@@ -4,7 +4,7 @@ import { useState } from "react";
 import Popup from "./Popup"
 import PopImage from "./PopImage"
 
-const Project = ({ projectData }) => {
+const ProjectCard = ({ projectData }) => {
   const [isOpenVideo, setIsOpenVideo] = useState(false);
   const [isOpenImg, setIsOpenImg] = useState(false);
   const openImgModal = () => {
@@ -60,4 +60,4 @@ const Project = ({ projectData }) => {
 };
 
 
-export default Project;
+export default ProjectCard;
