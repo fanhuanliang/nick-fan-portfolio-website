@@ -59,5 +59,4 @@ const ProjectCard = ({ projectData }) => {
   );
 };
 
-
 export default ProjectCard;
