@@ -12,9 +12,14 @@ const Popup = ({open, onClose, title, youTubeURL}) => {
         <span onClick={onClose} className={style.close_button}>
           <Icon name="close" size="big" />
         </span>
-        <h1>{title}</h1>
-        <div>
-          <ReactPlayer url={youTubeURL} playing={isPlaying} />
+        <h2>{title}</h2>
+        <div className={style.player}>
+          <ReactPlayer
+            width="100%"
+            height="100%"
+            url={youTubeURL}
+            playing={isPlaying}
+          />
         </div>
       </div>
     </div>
