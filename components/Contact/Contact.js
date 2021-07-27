@@ -42,13 +42,13 @@ export default function Contact() {
       emailjs.sendForm(serviceID, templateID, e.target, userID).then(
         (result) => {
           setInput({ ...input, notification: "Thank you for your message!" });
-          setIsOpen(true);
+          // setIsOpen(true);
         },
         (error) => {
           setInput({ ...input, notification: "Something wrong with the API, please try again or reach out to me though LinkIn" });
-          setIsOpen(true);
         }
-      );
+        );
+        setIsOpen(true);
   };
 
   return (
