@@ -28,9 +28,12 @@
   color: rgb(13, 1, 250);
   justify-content: center;
 }
-
+.header {
+  font-size: 4rem;
+  font-family: Verdana, Arial, Tahoma, Serif;
+}
 @media only screen and (max-width: 600px) {
-  .top_layer > h1 {
-    font-size: 1.5rem;
+  .header {
+    font-size: 1rem;
   }
 }

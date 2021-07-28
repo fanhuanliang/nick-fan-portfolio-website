@@ -5,7 +5,7 @@ const Notice = ({ open, onClose, notification}) => {
   return (
     <section className={style.bottom_layer} onClick={onClose}>
       <div className={style.top_layer} onClick={onClose}>
-        <h1 onClick={onClose}>{notification}</h1>
+        <div onClick={onClose} className={style.header}>{notification}</div>
       </div>
     </section>
   );
