@@ -1,13 +1,31 @@
 import styleMain from "../../styles/Main.module.css";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Canvas from "../canvas/Canvas";
 import { Icon } from "semantic-ui-react";
 import { Link } from "react-scroll";
+import { motion, useAnimation } from "framer-motion";
 
 const Main = () => {
-  React.useEffect(() => {
+  useEffect(() => {
     Canvas();
   }, []);
+  const variants = {
+    hidden: { opacity: 0 },
+    visible: { opacity: 1 },
+  };
+  const controls = useAnimation();
+  const [isHovered, setHovered] = useState(true);
+  useEffect(() => {
+    if (isHovered) {
+      controls.start((i) => ({
+        opacity: 1,
+        y: 20,
+        transition: { yoyo: Infinity, duration: 0.5 },
+      }));
+    } else {
+      controls.start(() => ({ y:0 }));
+    }
+  }, [isHovered]);
 
   return (
     <div className={styleMain.main} id="main">
@@ -15,20 +33,47 @@ const Main = () => {
       <div className={styleMain.container_main}>
         <div className={styleMain.row}>
           <div className={styleMain.text_center}>
-            <h1 id={styleMain.hello}>
+            <motion.h1
+              initial="hidden"
+              animate="visible"
+              variants={variants}
+              transition={{ duration: 1 }}
+              id={styleMain.hello}
+            >
               Hello, I am
-            </h1>
-            <h1 id={styleMain.name}>
+            </motion.h1>
+            <motion.h1
+              initial="hidden"
+              animate="visible"
+              variants={variants}
+              transition={{ duration: 2.5 }}
+              id={styleMain.name}
+            >
               Huanliang Fan
-            </h1>
+            </motion.h1>
 
-            <h1 id={styleMain.person_description}>
+            <motion.h1
+              initial="hidden"
+              animate="visible"
+              variants={variants}
+              transition={{ duration: 3.5 }}
+              id={styleMain.person_description}
+            >
               Full Stack Software Engineer
-            </h1>
+            </motion.h1>
           </div>
         </div>
       </div>
-      <div className={styleMain.icon}>
+      <motion.div
+        className={styleMain.icon}
+        animate={controls}
+        // animate={{ y: -20 }}
+        // transition={{ yoyo: Infinity }}
+        // transition={{ ease: "easeOut", duration: 2 }}
+        // whileHover={{ scale: 1.1 }}
+        onMouseEnter={() => setHovered(false)}
+        onMouseLeave={() => setHovered(true)}
+      >
         <div className={styleMain.banner_buttons}>
           <Link
             activeClass="active"
@@ -41,7 +86,7 @@ const Main = () => {
             <Icon name="angle double down" size="huge" />
           </Link>
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 };
