@@ -16,7 +16,7 @@
   padding: 50px;
   z-index: 100;
   width: 70vw;
-  height: 50vh;
+  height: auto;
   border: 1px solid grey;
   border-radius: 10px;
   box-shadow: 10px 10px black;
@@ -27,4 +27,11 @@
   overflow: auto;
   color: rgb(13, 1, 250);
   justify-content: center;
+}
+
+@media only screen and (max-width: 600px) {
+  .top_layer  h1 {
+    font-size: 1.5rem;
+  }
+
 }
