@@ -22,8 +22,5 @@
   "devDependencies": {
     "eslint": "7.30.0",
     "eslint-config-next": "11.0.1"
-  },
-  "peerDependencies": {
-    "react-spring": "^8.0.27"
   }
 }
