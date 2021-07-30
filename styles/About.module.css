@@ -5,10 +5,12 @@
   background-attachment: fixed;
   background-position: center; 
   min-height: 100vh;
+}
+
+.wrapper {
   display: flex;
   flex-direction: row;
 }
-
 .img {
   margin: 50px
 }
@@ -41,6 +43,14 @@
   line-height: 2em;
   padding: 30px 150px 0 0; 
 }
+.tech {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  text-align: center;
+}
+
 
 @media only screen and (max-width: 600px) {
   .about_header h1 {
