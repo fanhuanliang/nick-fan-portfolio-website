@@ -1,8 +1,17 @@
 import styleAbout from "../../styles/About.module.css";
+import Image from "next/image";
 
 export default function AboutMe() {
   return (
     <div className={styleAbout.about} id="about">
+      <div className={styleAbout.img}>
+        <Image
+          src="/images/selfie.png"
+          alt="selfie"
+          height={1000}
+          width={1000}
+        />
+      </div>
       <div className={styleAbout.container_about}>
         <div className="row">
           <div className="col-sm-12 col-md-12 text-center">
@@ -17,9 +26,9 @@ export default function AboutMe() {
             <p className={styleAbout.paragraph}>
               I am a full-stack software engineer with a background in Sales and
               Business. I am pursuing my passion for tech through a full-time
-              opportunity as a Software Engineer. I like
-              solving problems and delivering clean code on time. Please contact
-              me if you rre looking for a passionate Software Engineer.
+              opportunity as a Software Engineer. I like solving problems and
+              delivering clean code on time. Please contact me if you are
+              looking for a passionate Software Engineer.
               <br></br>When I am not coding, I enjoy playing basketball,
               cooking, traveling, and playing guitar.
             </p>
