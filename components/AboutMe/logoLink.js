@@ -1,0 +1,22 @@
+export const logo = [
+  {
+    id:1,
+    link:'/images/css-logo.svg'
+  },
+  {
+    id:2,
+    link:'/images/css-logo.svg'
+  },
+  {
+    id:3,
+    link:'/images/css-logo.svg'
+  },
+  {
+    id:4,
+    link:'/images/css-logo.svg'
+  },
+  {
+    id:5,
+    link:'/images/css-logo.svg'
+  },
+]
