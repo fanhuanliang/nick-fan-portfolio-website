@@ -49,7 +49,7 @@ const Main = () => {
               transition={{ duration: 2.5 }}
               id={styleMain.name}
             >
-              Huanliang Fan
+              Nick Fan
             </motion.h1>
 
             <motion.h1
