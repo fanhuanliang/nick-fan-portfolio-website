@@ -1,7 +1,7 @@
 export const logo = [
   {
     id:1,
-    link:'/images/css-logo.svg'
+    link:'/images/html-5.svg'
   },
   {
     id:2,
@@ -9,14 +9,38 @@ export const logo = [
   },
   {
     id:3,
-    link:'/images/css-logo.svg'
+    link:'/images/js-logo.svg'
   },
   {
     id:4,
-    link:'/images/css-logo.svg'
+    link:'/images/typescript.svg'
   },
   {
     id:5,
-    link:'/images/css-logo.svg'
+    link:'/images/react.svg'
   },
+  {
+    id:6,
+    link:'/images/nextjs.svg'
+  },
+  {
+    id:7,
+    link:'/images/nodejs.svg'
+  },
+  {
+    id:8,
+    link:'/images/express.svg'
+  },
+  {
+    id:9,
+    link:'/images/mysql.svg'
+  },
+  {
+    id:10,
+    link:'/images/mongodb.svg'
+  },
+  {
+    id:11,
+    link:'/images/git.svg'
+  }
 ]

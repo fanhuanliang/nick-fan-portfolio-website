@@ -9,7 +9,7 @@ export default function AboutMe() {
       <div className={styleAbout.wrapper}>
         <div className={styleAbout.img}>
           <Image
-            src="/images/selfie.png"
+            src="/images/IMG_1857.png"
             alt="selfie"
             height={1000}
             width={1000}
@@ -40,8 +40,8 @@ export default function AboutMe() {
         </div>
       </div>
       <div className={styleAbout.tech}>
-        <h1>Technologies</h1>
-        <div>
+        <h1 className={styleAbout.techHeader}>Technologies</h1>
+        <div className={styleAbout.techRow}>
           {logo.map((item) => (
             <TechStacks key={item.id} logoLink={item.link} />
           ))}

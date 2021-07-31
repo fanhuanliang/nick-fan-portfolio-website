@@ -1,14 +1,11 @@
-// import Image from "next/image";
+import Image from "next/image";
+import style from "../../styles/TechStacks.module.css";
 
-// const TechStacks = ({ logoLink }) => {
-const TechStacks = () => {
+const TechStacks = ({ logoLink }) => {
   return (
-    <div>
-      <div>
-        {/* <Image height={375} width={600} src={logoLink} alt="css" /> */}
-        hey
+      <div className={style.logo}>
+        <Image height={100} width={100} src={logoLink} alt="css" />
       </div>
-    </div>
   );
 }
 
