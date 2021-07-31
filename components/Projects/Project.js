@@ -3,6 +3,7 @@ import styleProject from "../../styles/Project.module.css";
 import { useState } from "react";
 import Popup from "./Popup"
 import PopImage from "./PopImage"
+import { motion } from "framer-motion";
 
 const Project = ({ projectData }) => {
   const [isOpenVideo, setIsOpenVideo] = useState(false);
@@ -15,7 +16,13 @@ const Project = ({ projectData }) => {
   }
 
   return (
-    <div className={styleProject.project_card_container} id="project">
+    <motion.div
+      className={styleProject.project_card_container}
+      id="project"
+      whileHover={{
+        scale: 1.1,
+      }}
+    >
       <div className={styleProject.project_image}>
         <Image
           className="project_card"
@@ -55,7 +62,7 @@ const Project = ({ projectData }) => {
         title={projectData.appName}
         youTubeURL={projectData.youTubeLink}
       />
-    </div>
+    </motion.div>
   );
 };
 
