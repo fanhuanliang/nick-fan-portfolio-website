@@ -27,11 +27,12 @@ export default function AboutMe() {
           <div className="row">
             <div className={styleAbout.description}>
               <p className={styleAbout.paragraph}>
-                I am a full-stack software engineer with a background in Sales
-                and Business. I am pursuing my passion for tech through a
-                full-time opportunity as a Software Engineer. I like solving
-                problems and delivering clean code on time. Please contact me if
-                you are looking for a passionate Software Engineer.
+                I am a full-stack software engineer, and pursuing my passion for
+                tech through a full-time opportunity as a Software Engineer. I
+                like solving problems and delivering clean code on time. I
+                particularly enjoy working on the front end, especially with
+                React, and love the satisfaction that comes with bringing an
+                idea to life.
                 <br></br>When I am not coding, I enjoy playing basketball,
                 cooking, traveling, and playing guitar.
               </p>
