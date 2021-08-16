@@ -19,7 +19,7 @@ export default function Footer() {
             </a>
           </div>
 
-          <div className="linkedin">
+          {/* <div className="linkedin">
             <a
               href="https://www.linkedin.com/in/fanhuanliang/"
               target="_blank"
@@ -27,11 +27,11 @@ export default function Footer() {
             >
               <Image className="img-responsive" src={linkedIn} alt="linkedin" />
             </a>
-          </div>
+          </div> */}
 
           <div className="email-icon">
             <a
-              href="mailto:fanhuanliang@gmail.com"
+              href="mailto:nick.fan.sde@gmail.com"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -39,7 +39,6 @@ export default function Footer() {
             </a>
           </div>
         </div>
-
       </div>
     </footer>
   );
