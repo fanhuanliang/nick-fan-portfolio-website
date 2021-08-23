@@ -59,7 +59,7 @@ const Main = () => {
               transition={{ duration: 3.5 }}
               id={styleMain.person_description}
             >
-              Full Stack Software Engineer
+              Web Developer
             </motion.h1>
           </div>
         </div>
