@@ -31,6 +31,18 @@ const NavLinks = () => {
       <li>
         <Link
           activeClass="active"
+          to="experience"
+          spy={true}
+          smooth={true}
+          offset={-70}
+          duration={500}
+        >
+          Experience
+        </Link>
+      </li>
+      <li>
+        <Link
+          activeClass="active"
           to="projects"
           spy={true}
           smooth={true}

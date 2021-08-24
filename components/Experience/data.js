@@ -5,7 +5,7 @@ export const experienceData = [
     jobTitle: "React Developer",
     duration: "August 2020 - Present",
     location: "San Francisco, CA",
-    description: [
+    descriptions: [
       "Produced fully functional UI applications by writing clean code and working with UI/UX designers by implementing modern front-end development technologies such as React and Redux.",
       "Improved product aesthetics and UI of the high-volume online service, resulting in a 62% increase in users retention, by using CSS elements such as Background, Positioning, Text, Border, Pseudo-elements, Behaviors, etc.",
       "Ensured that the SPA successfully met accessibility and web browser standards, including solving cross-browser compatibility issues.",
@@ -25,7 +25,7 @@ export const experienceData = [
     jobTitle: "Front-End Developer",
     duration: "November 2017 - June 2020",
     location: "San Francisco, CA",
-    description: [
+    descriptions: [
       "Took responsibilities for building a Customer Relationship Management Application that integrates with the client’s core management systems and component libraries using charts, dashboard, tree, slide view, table-grid, etc.",
 
       "Developed modern front-end web pages with cutting-edge web development technologies including React, HTML5, CSS3, JavaScript, etc.",
@@ -47,7 +47,7 @@ export const experienceData = [
     jobTitle: "Front-End Developer",
     duration: "April 2016 - September 2017",
     location: "San Francisco, CA",
-    description: [
+    descriptions: [
       "Worked with advanced web development technologies including HTML5, CSS3, Node.js, React, Express, JavaScript, MongoDB, Bootstrap, Node.js, and Ajax to develop dynamic web pages based on guidelines and requirements.",
 
       "Handled incident and problem management activities for personal and third-party interfaces designs and successfully coped with various client-side validations.",
@@ -69,7 +69,7 @@ export const experienceData = [
     jobTitle: "UI Developer",
     duration: "December 2014 - February 2016",
     location: "San Jose, CA",
-    description: [
+    descriptions: [
       "Worked with engineering leadership on identifying the best approach and tooling for new features.",
 
       "Developed the user interfaces and layouts for the web application that matches the requirements of the client using HTML5, CSS3, JavaScript, jQuery, etc.",

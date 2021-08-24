@@ -4,6 +4,7 @@ import AboutMe from "../components/AboutMe/AboutMe";
 import Projects from "../components/Projects/Projects";
 import Contact from "../components/Contact/Contact";
 import Main from "../components/Main/Main";
+import Experience from '../components/Experience/Experience'
 import "semantic-ui-css/semantic.min.css";
 
 export default function Home() {
@@ -17,6 +18,7 @@ export default function Home() {
       <Main />
       <Navbar />
       <AboutMe />
+      <Experience />
       <Projects />
       <Contact />
     </>
