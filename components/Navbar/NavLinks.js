@@ -73,6 +73,15 @@ const NavLinks = () => {
           Resume
         </a>
       </li>
+      <li>
+        <a
+          href="https://github.com/fanhuanliang"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Github
+        </a>
+      </li>
     </ul>
   );
 }
