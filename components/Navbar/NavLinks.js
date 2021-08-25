@@ -66,7 +66,7 @@ const NavLinks = () => {
       </li>
       <li>
         <a
-          href="https://drive.google.com/file/d/1MV7jQR2f-uxySqbvDENPfDv-8aU7i0_5/view?usp=sharing"
+          href="https://drive.google.com/file/d/1RXMTnsZRup8uBtYi01WWk575sWjJJrIC/view?usp=sharing"
           target="_blank"
           rel="noopener noreferrer"
         >
