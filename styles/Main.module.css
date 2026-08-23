@@ -57,6 +57,7 @@
 #hello {
   /* font-family: Verdana, Arial, Tahoma, Serif; */
   font-size: 3.5rem;
+  font-weight: bold;
 }
 
 #name {
@@ -64,11 +65,13 @@
   font-size: 6.5rem;
   font-family: "Raleway-semibold";
   color: #7facfafa;
+  font-weight: bold;
 }
 
 #person_description {
   /* font-family: Verdana, Arial, Tahoma, Serif; */
   font-size: 2.8rem;
+  font-weight: bold;
 }
 
 .button_main {

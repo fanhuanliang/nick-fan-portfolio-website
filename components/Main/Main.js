@@ -1,7 +1,7 @@
 import styleMain from "../../styles/Main.module.css";
 import React, { useState, useEffect } from "react";
 import Canvas from "../canvas/Canvas";
-import { ChevronDown } from "lucide-react";
+import { ChevronsDown } from "lucide-react";
 import { Link } from "react-scroll";
 import { motion, useAnimation } from "framer-motion";
 
@@ -82,7 +82,7 @@ const Main = () => {
             offset={-70}
             duration={500}
           >
-            <ChevronDown size={64} />
+            <ChevronsDown size={64} color="#7facfafa" />
           </Link>
         </div>
       </motion.div>
