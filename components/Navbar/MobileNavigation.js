@@ -1,3 +1,5 @@
+"use client";
+
 import NavLinks from "./NavLinks";
 import styleNavbar from "../../styles/Navbar.module.css";
 import { Spin as Hamburger } from "hamburger-react";

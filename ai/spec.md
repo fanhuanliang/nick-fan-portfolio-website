@@ -14,7 +14,7 @@ _Updated after Phase 1 (dependency/tooling upgrade) — see plan.md._
 
 | Concern | Current | Notes |
 |---|---|---|
-| Framework | Next.js 15.5.23 | Pages Router still in use (App Router migration is Phase 3) |
+| Framework | Next.js 15.5.23 | App Router (`app/`) — migrated in Phase 3 |
 | UI Library | React 19.2.8 | |
 | Animation | framer-motion 13.x | `yoyo` transition fixed → `repeat`/`repeatType` |
 | Styling | CSS Modules + Tailwind CSS v4 (tooling only) | Semantic UI removed entirely; Tailwind imported without Preflight so no component uses its utility classes yet |
@@ -24,7 +24,7 @@ _Updated after Phase 1 (dependency/tooling upgrade) — see plan.md._
 | Linting | ESLint 8.57 + eslint-config-next 15 | Not yet on ESLint 9/flat-config, to avoid an unplanned migration |
 
 ### Site Structure
-Single-page app (`pages/index.js`) with 5 sections rendered top-to-bottom:
+Single-page app (`app/page.js`) with 5 sections rendered top-to-bottom:
 1. **Main** — animated canvas hero + fade-in name text + scroll arrow
 2. **AboutMe** — bio paragraph + tech stack icon grid
 3. **Experience** — 4 job cards (Comerica 2014 → Pacific Specialty 2020–present)

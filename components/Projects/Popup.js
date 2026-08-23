@@ -1,3 +1,5 @@
+"use client";
+
 import { useState } from 'react'
 import style from '../../styles/Popup.module.css'
 import ReactPlayer from "react-player";

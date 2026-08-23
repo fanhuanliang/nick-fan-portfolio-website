@@ -74,7 +74,7 @@ but should be completed before the next phase begins.
 
 ---
 
-## Phase 3 — App Router Migration
+## Phase 3 — App Router Migration ✅ Complete
 
 **Goal:** Migrate from `pages/` directory to Next.js App Router (`app/`).
 
@@ -82,21 +82,26 @@ but should be completed before the next phase begins.
 1. **Create `app/` directory structure**
    ```
    app/
-     layout.tsx       ← root layout (replaces _app.js + <Head>)
-     page.tsx         ← home page (replaces pages/index.js)
-     globals.css      ← Tailwind entry point
+     layout.js       ← root layout (replaces _app.js + <Head>)
+     page.js         ← home page (replaces pages/index.js)
    ```
+   - *Execution note:* kept `.js` (not `.tsx`) — TypeScript conversion stays scoped to Phase 5, per Phase 1's original decision. `globals.css` is imported directly in `layout.js`, same as it was in `_app.js`; no separate Tailwind entry point needed since Tailwind's imports already live inside `globals.css` itself (from Phase 1).
 
-2. **Move metadata to `layout.tsx`**
-   - Use Next.js 15 `Metadata` export instead of `<Head>` + `next/head`
-   - Add Open Graph and Twitter card metadata
-   - Add JSON-LD structured data for `Person` schema
+2. **Move metadata to `layout.js`**
+   - Migrated title, description, keywords, Open Graph, and Twitter metadata to the App Router `Metadata` export.
+   - Added the App Router `viewport` export to preserve the old explicit `<meta name="viewport">` behavior.
+   - Added initial `Person` JSON-LD in the root layout. Phase 6 still owns the fuller SEO/performance pass: canonical production URL validation, OG image, sitemap, robots, and rich-results validation.
+   - Added `<html lang="en">` — required scaffolding for the App Router root layout (there was no `pages/_document.js` setting it before); not a behavior change.
 
-3. **Convert `_app.js` logic into `layout.tsx`**
-   - Global CSS import moves here
-   - Add `ThemeProvider` wrapper for dark mode (see Phase 4)
+3. **Convert `_app.js` logic into `layout.js`**
+   - Global CSS import moved here directly.
+   - `ThemeProvider` wrapper is *not* added yet — that's Phase 4's job; this step's original wording was a forward-reference, not a Phase 3 deliverable.
 
-4. **Delete `pages/` directory** once app router is working
+4. **Delete `pages/` directory** — done in the same commit as steps 1-2 (not staged separately), since `app/page.js` and `pages/index.js` would otherwise both resolve to `/` and Next.js hard-errors on the route conflict. `pages/_app.js`, `pages/index.js`, and the now-empty `pages/` directory were all removed together.
+
+5. **Server/Client Component boundaries** (not an original plan.md step, but required by the App Router's Server-Component-by-default model): audited all 20 files under `components/` and added `"use client"` to the 8 that use hooks/handlers/browser APIs directly — `Main.js`, `MobileNavigation.js`, `NavLinks.js`, `Contact.js`, `Notice.js`, `Project.js`, `Popup.js`, `PopImage.js`. Confirmed via direct reads of the Navbar/Projects/Contact composition that no function/callback props cross from a Server Component into a Client Component (only plain serializable data, e.g. `Projects.js` → `Project.js`'s `projectData`), so no other files needed the directive — `Navbar.js`, `Navigation.js`, `Projects.js`, `AboutMe.js`, `TechStacks.js`, `Experience.js`, `ExperienceCard.js`, `Footer.js`, and the data-only files all stayed Server Components unchanged.
+
+Verified: `next build` succeeds (route table now reports `Route (app)` with `/` and the auto-generated `/_not-found`, replacing the old Pages `/404`), development server serves correct metadata/anchors/icons with no hydration errors.
 
 ---
 
@@ -244,12 +249,12 @@ but should be completed before the next phase begins.
 | Phase | Effort | Risk | Value | Status |
 |---|---|---|---|---|
 | 1 — Deps & Tooling | Medium | Medium | Unblocks everything | ✅ Complete |
-| 2 — Post-Upgrade Regression Fixes | Low | Low | Restores pre-upgrade visual parity | 🔄 In progress (manual regression testing underway) |
-| 3 — App Router | Medium | Low | Future-proofs architecture | Not started |
+| 2 — Post-Upgrade Regression Fixes | Low | Low | Restores pre-upgrade visual parity | ✅ Complete |
+| 3 — App Router | Medium | Low | Future-proofs architecture | ✅ Complete |
 | 4 — Dark Mode | Low | Low | UX polish | Not started |
 | 5 — Component Rewrite | High | Low | Code quality, maintainability | Not started |
 | 6 — Performance & SEO | Low | Low | Discoverability | Not started |
 | 7 — Accessibility | Low | Low | Inclusivity, professionalism | Not started |
 | 8 — Deploy | Low | Low | Live site | Not started |
 
-**Recommended next step:** Finish Phase 2 regression testing/fixes, then Phase 3 (App Router migration) and Phase 5b (Canvas fix) as the two highest-ROI remaining steps.
+**Recommended next step:** Phase 4 (Dark Mode) or Phase 5 (Component Rewrite) — Phase 5b (Canvas fix) remains the highest-ROI correctness item in the rewrite phase.

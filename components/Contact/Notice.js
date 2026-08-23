@@ -1,3 +1,5 @@
+"use client";
+
 import style from "../../styles/Notice.module.css"
 
 const Notice = ({ open, onClose, notification}) => {

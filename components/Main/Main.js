@@ -1,3 +1,5 @@
+"use client";
+
 import styleMain from "../../styles/Main.module.css";
 import React, { useState, useEffect } from "react";
 import Canvas from "../canvas/Canvas";
@@ -25,7 +27,7 @@ const Main = () => {
     } else {
       controls.start(() => ({ y:0 }));
     }
-  }, [isHovered]);
+  }, [controls, isHovered]);
 
   return (
     <div className={styleMain.main} id="main">
