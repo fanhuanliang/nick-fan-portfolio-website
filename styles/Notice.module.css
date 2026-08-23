@@ -4,7 +4,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  z-index: 100;
+  z-index: 1100;
 }
 
 .top_layer {
@@ -13,13 +13,13 @@
   left: 50%;
   transform: translate(-50%, -50%);
   background-color: rgb(9, 248, 252);
-  padding: 50px;
-  z-index: 100;
+  padding: 32px;
+  z-index: 1101;
   width: 70vw;
   height: auto;
   border: 1px solid grey;
-  border-radius: 10px;
-  box-shadow: 10px 10px black;
+  border-radius: 8px;
+  box-shadow: 6px 6px black;
   display: flex;
   line-height: 30px;
   flex-direction: column;
@@ -29,7 +29,7 @@
   justify-content: center;
 }
 .header {
-  font-size: 4rem;
+  font-size: 2rem;
   font-family: Verdana, Arial, Tahoma, Serif;
 }
 @media only screen and (max-width: 600px) {

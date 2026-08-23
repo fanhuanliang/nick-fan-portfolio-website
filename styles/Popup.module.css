@@ -5,7 +5,7 @@
   right: 0;
   bottom: 0;
   background-color: white;
-  z-index: 100;
+  z-index: 1100;
 }
 
 .top_layer {
@@ -14,12 +14,12 @@
   left: 50%;
   transform: translate(-50%, -50%);
   background-color: rgb(250, 247, 247);
-  padding: 50px;
-  z-index: 100;
+  padding: 32px;
+  z-index: 1101;
   width: 70vw;
   height: 80vh;
   border: 1px solid grey;
-  border-radius: 10px;
+  border-radius: 8px;
   box-shadow: 10px 10px black;
   display: flex;
   line-height: 30px;

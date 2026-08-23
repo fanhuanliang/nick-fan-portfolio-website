@@ -79,7 +79,7 @@ const Main = () => {
             to="about"
             spy={true}
             smooth={true}
-            offset={-70}
+            offset={-38}
             duration={500}
           >
             <ChevronsDown size={64} color="#7facfafa" />

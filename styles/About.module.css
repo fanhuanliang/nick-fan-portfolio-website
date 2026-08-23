@@ -1,5 +1,5 @@
 .about {
-  padding: 3% 0;
+  padding: 2% 0;
   background: linear-gradient( rgba(225, 225, 225, 0.94), rgba(225, 225, 225, 0.94));
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -13,10 +13,10 @@
 }
 .img {
   position: relative;
-  flex: 0 0 220px;
-  width: 220px;
-  height: 220px;
-  margin: 50px;
+  flex: 0 0 150px;
+  width: 150px;
+  height: 150px;
+  margin: 34px;
   border-radius: 100%;
   overflow: hidden;
 }
@@ -24,14 +24,14 @@
 .container_about {
   padding-right: 15px;
   padding-left: 15px;
-  margin: 60px auto;
+  margin: 34px auto;
 }
 
 .about_header h1 {
   font-family: Verdana, "Slabo", Helvetica, serif;
   font-style: italic;
   font-weight: bold;
-  font-size: 4rem;
+  font-size: 2.6rem;
   text-align: left;
   padding: 10px;
 }
@@ -42,10 +42,10 @@
 }
 
 .paragraph {
-  font-size: 2rem;
+  font-size: 1.25rem;
   font-family: Comic Sans MS, Verdana, Arial, Tahoma, Serif;;
-  line-height: 2em;
-  padding: 30px 150px 0 0; 
+  line-height: 1.55em;
+  padding: 16px 120px 0 0; 
 }
 .tech {
   display: flex;
@@ -61,12 +61,12 @@
   align-content: center;
   text-align: center;
   flex-wrap: wrap;
-  margin: 30px 60px;
+  margin: 20px 60px;
 }
 
 .techHeader {
-  font-size: 3rem;
-  padding-bottom: 20px;
+  font-size: 2.2rem;
+  padding-bottom: 12px;
 }
 
 @media only screen and (max-width: 600px) {
@@ -76,24 +76,24 @@
   }
 
   .about_header h1 {
-    font-size: 2rem;
+    font-size: 1.8rem;
   }
 
   .img {
-    flex-basis: 160px;
-    width: 160px;
-    height: 160px;
-    margin: 50px auto 0;
+    flex-basis: 120px;
+    width: 120px;
+    height: 120px;
+    margin: 32px auto 0;
   }
 
   .container_about {
-    margin: 20px 0;
+    margin: 16px 0;
   }
 
   .paragraph {
-    font-size: 1.3rem;
+    font-size: 1.05rem;
     width: 100%;
-    line-height: 1.7em;
+    line-height: 1.55em;
     padding: 20px;
   } 
 }

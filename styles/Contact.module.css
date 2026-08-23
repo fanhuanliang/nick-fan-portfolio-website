@@ -1,6 +1,5 @@
 .contact {
   background-color: #3a3a3a;
-  /* padding: 50px 150px; */
   color: white;
   text-align: center;
   min-height: 100vh;
@@ -10,17 +9,18 @@
 }
 
 .contact > div {
-  width: 50vw;
+  width: min(640px, 100%);
+  margin: 0 auto;
 }
 .contact_row {
-  padding: 40px;
+  padding: 34px 24px 20px;
 }
 .contact input,
 .contact textarea {
   color: black;
   width: 80%;
-  font-size: 1.5rem;
-  border-radius: 10px;
+  font-size: 1rem;
+  border-radius: 8px;
   padding: 5px;
 }
 
@@ -30,15 +30,15 @@
 }
 
 .contact h1 {
-  font-size: 4rem;
+  font-size: 2.6rem;
 }
 
 .contact h4 {
-  font-size:1.5rem;
+  font-size:1.15rem;
 }
 
 .message > textarea{
-  height:  300px
+  height:  180px
 }
 
 .submit_contact {
@@ -68,7 +68,20 @@
 }
 
 @media only screen and (max-width: 600px) {
-.contact > div {
-  width: 100vw;
-}
+  .contact > div {
+    width: 100%;
+  }
+
+  .contact_row {
+    padding: 28px 16px 14px;
+  }
+
+  .contact h1 {
+    font-size: 2rem;
+  }
+
+  .contact input,
+  .contact textarea {
+    width: 86%;
+  }
 }

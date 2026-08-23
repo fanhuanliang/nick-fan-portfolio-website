@@ -12,7 +12,7 @@ export default function AboutMe() {
             src="/images/IMG_1857.png"
             alt="selfie"
             fill
-            sizes="(max-width: 600px) 160px, 220px"
+            sizes="(max-width: 600px) 120px, 150px"
             style={{ objectFit: "cover" }}
           />
         </div>

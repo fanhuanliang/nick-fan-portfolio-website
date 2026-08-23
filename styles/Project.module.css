@@ -1,15 +1,14 @@
 .project_card_container {
   background-color: #fff;
   margin: 5px;
-  padding: 20px;
-  border-radius: 15px;
+  padding: 16px;
+  border-radius: 8px;
   text-align: center;
   color: rgb(102, 96, 96);
   box-shadow: 5px 5px 2px 1px rgba(249, 249, 255, 0.2);
   /* position: "relative"; */
   /* max-width: 485px; */
   /* max-height: 575px; */
-  min-height: 638px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -20,16 +19,22 @@
   position: relative
 }
 
+.project_image img {
+  max-width: 100%;
+  height: auto;
+}
+
 .project_card {
-  margin-bottom: 15px;
+  margin-bottom: 12px;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  height: 200px;
+  min-height: 170px;
 }
 
 .description {
-  font-size: 1.5rem;
+  font-size: 1rem;
+  line-height: 1.45;
 }
 
 .tech_stacks {
@@ -48,7 +53,7 @@
 	display:inline-block;
 	color:#666666;
 	font-family:Arial;
-	font-size:14px;
+	font-size:13px;
 	font-weight:bold;
 	padding:3px 12px;
 	text-decoration:none;
@@ -65,7 +70,7 @@
 	cursor:pointer;
 	color:#ffffff;
 	font-family:Arial;
-	font-size:15px;
+	font-size:14px;
 	font-weight:bold;
 	padding:6px 24px;
 	text-decoration:none;
@@ -79,4 +84,22 @@
 .button button:active {
 	position:relative;
 	top:1px;
+}
+
+@media only screen and (max-width: 600px) {
+  .project_card_container {
+    padding: 14px;
+  }
+
+  .project_card h2 {
+    font-size: 1.35rem;
+  }
+
+  .project_card {
+    min-height: auto;
+  }
+
+  .description {
+    font-size: 0.95rem;
+  }
 }

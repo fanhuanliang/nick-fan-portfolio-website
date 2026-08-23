@@ -10,7 +10,7 @@ const NavLinks = () => {
           to="main"
           spy={true}
           smooth={true}
-          offset={-70}
+          offset={-38}
           duration={500}
         >
           Home
@@ -22,7 +22,7 @@ const NavLinks = () => {
           to="about"
           spy={true}
           smooth={true}
-          offset={-70}
+          offset={-38}
           duration={500}
         >
           About
@@ -34,7 +34,7 @@ const NavLinks = () => {
           to="experience"
           spy={true}
           smooth={true}
-          offset={-70}
+          offset={-38}
           duration={500}
         >
           Experience
@@ -46,7 +46,7 @@ const NavLinks = () => {
           to="projects"
           spy={true}
           smooth={true}
-          offset={-70}
+          offset={-38}
           duration={500}
         >
           Portfolio
@@ -58,7 +58,7 @@ const NavLinks = () => {
           to="contact"
           spy={true}
           smooth={true}
-          offset={-70}
+          offset={-38}
           duration={500}
         >
           Contact
