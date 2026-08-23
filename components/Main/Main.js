@@ -1,7 +1,7 @@
 import styleMain from "../../styles/Main.module.css";
 import React, { useState, useEffect } from "react";
 import Canvas from "../canvas/Canvas";
-import { Icon } from "semantic-ui-react";
+import { ChevronDown } from "lucide-react";
 import { Link } from "react-scroll";
 import { motion, useAnimation } from "framer-motion";
 
@@ -20,7 +20,7 @@ const Main = () => {
       controls.start((i) => ({
         opacity: 1,
         y: 20,
-        transition: { yoyo: Infinity, duration: 0.5 },
+        transition: { repeat: Infinity, repeatType: "reverse", duration: 0.5 },
       }));
     } else {
       controls.start(() => ({ y:0 }));
@@ -68,7 +68,6 @@ const Main = () => {
         className={styleMain.icon}
         animate={controls}
         // animate={{ y: -20 }}
-        // transition={{ yoyo: Infinity }}
         // transition={{ ease: "easeOut", duration: 2 }}
         // whileHover={{ scale: 1.1 }}
         onMouseEnter={() => setHovered(false)}
@@ -83,7 +82,7 @@ const Main = () => {
             offset={-70}
             duration={500}
           >
-            <Icon name="angle double down" size="huge" />
+            <ChevronDown size={64} />
           </Link>
         </div>
       </motion.div>

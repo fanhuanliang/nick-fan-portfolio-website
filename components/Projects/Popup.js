@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import style from '../../styles/Popup.module.css'
 import ReactPlayer from "react-player";
-import { Icon } from "semantic-ui-react";
+import { X } from "lucide-react";
 
 const Popup = ({open, onClose, title, youTubeURL}) => {
   const [isPlaying, setIsPlaying] = useState(true);
@@ -10,7 +10,7 @@ const Popup = ({open, onClose, title, youTubeURL}) => {
     <div className={style.bottom_layer}>
       <div className={style.top_layer}>
         <span onClick={onClose} className={style.close_button}>
-          <Icon name="close" size="big" />
+          <X size={32} />
         </span>
         <h2>{title}</h2>
         <div className={style.player}>

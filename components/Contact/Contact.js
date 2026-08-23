@@ -1,6 +1,6 @@
 import styleContact from "../../styles/Contact.module.css";
 import { useState } from "react";
-import emailjs from "emailjs-com";
+import emailjs from "@emailjs/browser";
 import Footer from "../Footer/Footer";
 import { serviceID, templateID, userID } from "./emailjs.config";
 import Notice from "./Notice"

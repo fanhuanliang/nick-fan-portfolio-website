@@ -5,7 +5,6 @@ import Projects from "../components/Projects/Projects";
 import Contact from "../components/Contact/Contact";
 import Main from "../components/Main/Main";
 import Experience from '../components/Experience/Experience'
-import "semantic-ui-css/semantic.min.css";
 
 export default function Home() {
   return (
