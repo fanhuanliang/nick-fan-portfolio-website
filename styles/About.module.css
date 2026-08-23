@@ -12,10 +12,13 @@
   flex-direction: row;
 }
 .img {
-  margin: 50px
-}
-.img img {
+  position: relative;
+  flex: 0 0 220px;
+  width: 220px;
+  height: 220px;
+  margin: 50px;
   border-radius: 100%;
+  overflow: hidden;
 }
 
 .container_about {
@@ -27,8 +30,9 @@
 .about_header h1 {
   font-family: Verdana, "Slabo", Helvetica, serif;
   font-style: italic;
+  font-weight: bold;
   font-size: 4rem;
-  /* text-align: center; */
+  text-align: left;
   padding: 10px;
 }
 
@@ -66,12 +70,26 @@
 }
 
 @media only screen and (max-width: 600px) {
+  .wrapper {
+    flex-direction: column;
+    align-items: center;
+  }
+
   .about_header h1 {
     font-size: 2rem;
   }
-.img {
-  margin: 50px 0 0 30px
-}
+
+  .img {
+    flex-basis: 160px;
+    width: 160px;
+    height: 160px;
+    margin: 50px auto 0;
+  }
+
+  .container_about {
+    margin: 20px 0;
+  }
+
   .paragraph {
     font-size: 1.3rem;
     width: 100%;

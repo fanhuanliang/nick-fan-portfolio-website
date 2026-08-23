@@ -11,8 +11,9 @@ export default function AboutMe() {
           <Image
             src="/images/IMG_1857.png"
             alt="selfie"
-            height={1000}
-            width={1000}
+            fill
+            sizes="(max-width: 600px) 160px, 220px"
+            style={{ objectFit: "cover" }}
           />
         </div>
         <div className={styleAbout.container_about}>
