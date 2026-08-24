@@ -1,7 +1,7 @@
 .projects {
-  background-color: #59585d;
+  background-color: var(--bg-band);
   padding: 42px 32px;
-  color: white;
+  color: var(--text-inverse);
   min-height: 100vh;
 }
 

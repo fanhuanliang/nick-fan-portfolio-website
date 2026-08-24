@@ -1,10 +1,54 @@
 @import url("https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic&display=swap");
 
+:root {
+  color-scheme: light;
+  --bg-page: #ffffff;
+  --bg-about: rgba(225, 225, 225, 0.94);
+  --bg-surface: #ffffff;
+  --bg-hero: #333333;
+  --bg-nav: #58555a;
+  --bg-nav-mobile: rgb(114, 111, 107);
+  --bg-band: #59585d;
+  --bg-contact: #3a3a3a;
+  --bg-notice: rgb(9, 248, 252);
+  --text-primary: #000000;
+  --text-secondary: rgb(102, 96, 96);
+  --text-inverse: #ffffff;
+  --text-notice: rgb(13, 1, 250);
+  --border-color: grey;
+  --border-subtle: #ffffff;
+  --shadow-color: rgba(249, 249, 255, 0.2);
+  --shadow-hard: #000000;
+}
+
+:root.dark {
+  color-scheme: dark;
+  --bg-page: #121212;
+  --bg-about: #1c1c1c;
+  --bg-surface: #242424;
+  --bg-hero: #1a1a1a;
+  --bg-nav: #2c2a2e;
+  --bg-nav-mobile: #3a3838;
+  --bg-band: #2e2d30;
+  --bg-contact: #202020;
+  --bg-notice: rgb(9, 248, 252);
+  --text-primary: #f2f2f2;
+  --text-secondary: #b3b3b3;
+  --text-inverse: #f2f2f2;
+  --text-notice: rgb(13, 1, 250);
+  --border-color: #4d4d4d;
+  --border-subtle: rgba(255, 255, 255, 0.12);
+  --shadow-color: rgba(0, 0, 0, 0.4);
+  --shadow-hard: rgba(255, 255, 255, 0.25);
+}
+
 html,
 body {
   padding: 0;
   margin: 0;
   font-family: Lato, "Helvetica Neue", Arial, Helvetica, sans-serif;
+  background-color: var(--bg-page);
+  color: var(--text-primary);
 }
 
 a {
@@ -43,3 +87,4 @@ a {
 @layer theme, base, components, utilities;
 @import "tailwindcss/theme.css" layer(theme);
 @import "tailwindcss/utilities.css" layer(utilities);
+@custom-variant dark (&:where(.dark, .dark *));

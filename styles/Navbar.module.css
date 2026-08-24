@@ -1,8 +1,8 @@
 .navigation {
   width: 100%;
   padding: 2px 0;
-  background: #58555A;
-  position: fixed;
+  background: var(--bg-nav);
+  position: sticky;
   top: 0;
   left: 0;
   z-index: 1000;
@@ -51,7 +51,7 @@
     top: 38px;
     left: 0;
     width: 100%;
-    background: rgb(114, 111, 107);
+    background: var(--bg-nav-mobile);
   }
   
   .primary_nav nav ul li {
@@ -64,13 +64,13 @@
 .primary_nav li {
   display: inline-block;
   margin: 0px 14px;
-  color: white;
+  color: var(--text-inverse);
   font-size: 11pt;
   cursor: pointer;
 }
 
 .primary_nav li > * {
-  color: white;
+  color: var(--text-inverse);
   padding-bottom: 5px;
   -webkit-transition: border 50ms linear;
   -moz-transition: border 50ms linear;
@@ -81,6 +81,6 @@
 
 .primary_nav a:hover {
   text-decoration: none;
-  color: white;
+  color: var(--text-inverse);
   border-bottom: 2px solid #f5f5f5;
 }

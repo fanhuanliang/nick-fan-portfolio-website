@@ -4,7 +4,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: white;
+  background-color: var(--bg-page);
   z-index: 1100;
 }
 
@@ -13,14 +13,14 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: rgb(250, 247, 247);
+  background-color: var(--bg-surface);
   padding: 32px;
   z-index: 1101;
   width: 70vw;
   height: 80vh;
-  border: 1px solid grey;
+  border: 1px solid var(--border-color);
   border-radius: 8px;
-  box-shadow: 10px 10px black;
+  box-shadow: 10px 10px var(--shadow-hard);
   display: flex;
   line-height: 30px;
   flex-direction: column;

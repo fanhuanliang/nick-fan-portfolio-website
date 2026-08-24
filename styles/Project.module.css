@@ -1,11 +1,11 @@
 .project_card_container {
-  background-color: #fff;
+  background-color: var(--bg-surface);
   margin: 5px;
   padding: 16px;
   border-radius: 8px;
   text-align: center;
-  color: rgb(102, 96, 96);
-  box-shadow: 5px 5px 2px 1px rgba(249, 249, 255, 0.2);
+  color: var(--text-secondary);
+  box-shadow: 5px 5px 2px 1px var(--shadow-color);
   /* position: "relative"; */
   /* max-width: 485px; */
   /* max-height: 575px; */

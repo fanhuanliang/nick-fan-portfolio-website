@@ -105,24 +105,37 @@ Verified: `next build` succeeds (route table now reports `Route (app)` with `/` 
 
 ---
 
-## Phase 4 — Dark Mode
+## Phase 4 — Dark Mode ⚠️ Implemented, Finalization Pending
 
 **Goal:** Add system-aware dark/light mode with a manual toggle persisted to localStorage.
 
 ### Steps
-1. **Configure Tailwind dark mode**
-   - Set `darkMode: 'class'` in Tailwind config
+1. **Configure dark mode**
+   - *Execution note:* no component uses Tailwind utility classes yet (Phase 5's job), so `darkMode: 'class'`-style config alone would be inert — it wouldn't change anything visible today. Instead: 16 semantic CSS custom properties (`--bg-page`, `--bg-surface`, `--bg-nav`, `--text-primary`, etc.) added to `styles/globals.css`, defined in `:root` (light) and overridden in `:root.dark`. All ~45 scattered hardcoded colors across 9 CSS Module files were mapped to these variables (a few — `Main.module.css`'s `#7facfafa` "Nick Fan" accent, and the fully self-contained gradient buttons in `Contact.module.css`/`Project.module.css` — were deliberately left hardcoded; see plan details in git history/PR for the full per-file rationale). Also added Tailwind v4's `@custom-variant dark (&:where(.dark, .dark *));` directive so Phase 5's future Tailwind-class conversion already has working dark-mode plumbing to consume — inert today, since nothing uses Tailwind classes yet.
 
-2. **Create `ThemeProvider` component** (`components/ThemeProvider.tsx`)
-   - Reads `prefers-color-scheme` and `localStorage` on mount
-   - Toggles `dark` class on `<html>`
-   - Exposes `useTheme()` hook
+2. **Create `ThemeProvider` component** (`components/ThemeProvider.js`, plain `.js` per this project's established convention — TS conversion is Phase 5 only)
+   - Uses a deterministic initial `"light"` state so the server render and first client render match.
+   - Syncs the actual document theme inside `useEffect` after hydration. Do not move `document`, `window`, `localStorage`, or `matchMedia` reads back into render or a `useState` initializer — that caused the Phase 4 hydration error recorded in `audit.md`.
+   - A blocking inline script in `app/layout.js` applies the `dark` class before hydration to avoid a flash-of-wrong-theme without making `layout.js` a Client Component. `layout.js` must stay a Server Component because it exports `metadata` and `viewport`.
+   - Toggles `dark` class on `<html>`, persists to `localStorage["theme"]`
+   - Also listens for OS-level `prefers-color-scheme` changes, but only while no explicit user choice is stored
+   - Exposes `useTheme()` hook returning `{ theme, toggleTheme }`
 
 3. **Add toggle button to Navbar**
-   - Use `SunIcon` / `MoonIcon` from lucide-react
-   - Animate toggle with framer-motion `AnimatePresence`
+   - New `components/Navbar/ThemeToggle.js` (client component) using lucide-react `Sun`/`Moon` with a framer-motion crossfade, wired into `Navbar.js` as a third child of `.primary_nav` (`Navbar.js` itself stays a Server Component, per Phase 3's boundary discipline — no function props cross into `ThemeToggle`)
 
-4. **Update all color values** to use Tailwind dark variants (`dark:bg-*`, `dark:text-*`)
+4. **Tailwind dark variants**: not applicable this phase (see step 1) — will apply naturally once Phase 5 converts components to Tailwind utility classes.
+
+### Current Handoff
+Implementation is present in the working tree, but Phase 4 should not be treated as finished until these finalization steps are done:
+1. Run `npm run build`.
+2. Run the dev site and check the browser console for hydration warnings/errors on first load and after toggling the theme.
+3. Verify light/dark theme visually across Hero, Navbar, About, Experience, Projects, project modals, Contact, notice popup, and Footer at desktop and mobile widths.
+4. Verify theme persistence after reload and system-preference behavior when no stored theme exists.
+5. Update this section from "Finalization Pending" to "Complete" only after the above checks pass.
+6. Commit the Phase 4 implementation and documentation together.
+
+Known good checks from the last pass: `npm run build` passed after the hydration fix; a browser console check showed no warning/error logs before and after toggling; the toggle changed the root `.dark` class and ARIA label correctly; all sections existed with no horizontal overflow. Because the Phase 4 files are still uncommitted, repeat the checks before the final commit.
 
 ---
 
@@ -251,10 +264,10 @@ Verified: `next build` succeeds (route table now reports `Route (app)` with `/` 
 | 1 — Deps & Tooling | Medium | Medium | Unblocks everything | ✅ Complete |
 | 2 — Post-Upgrade Regression Fixes | Low | Low | Restores pre-upgrade visual parity | ✅ Complete |
 | 3 — App Router | Medium | Low | Future-proofs architecture | ✅ Complete |
-| 4 — Dark Mode | Low | Low | UX polish | Not started |
+| 4 — Dark Mode | Low | Low | UX polish | ⚠️ Implemented, final regression + commit pending |
 | 5 — Component Rewrite | High | Low | Code quality, maintainability | Not started |
 | 6 — Performance & SEO | Low | Low | Discoverability | Not started |
 | 7 — Accessibility | Low | Low | Inclusivity, professionalism | Not started |
 | 8 — Deploy | Low | Low | Live site | Not started |
 
-**Recommended next step:** Phase 4 (Dark Mode) or Phase 5 (Component Rewrite) — Phase 5b (Canvas fix) remains the highest-ROI correctness item in the rewrite phase.
+**Recommended next step:** Finish Phase 4 final regression, update this plan/spec/audit if anything changes, and commit. After that, start Phase 5; Phase 5b (Canvas fix) remains the highest-ROI correctness item in the rewrite phase.

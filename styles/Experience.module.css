@@ -1,7 +1,7 @@
 .container {
-  background-color: #59585d;
+  background-color: var(--bg-band);
   padding: 42px 36px;
-  color: white;
+  color: var(--text-inverse);
   min-height: 100vh;
 }
 
@@ -11,9 +11,9 @@
 }
 
 .card {
-  background-color: white;
-  color: black;
-  border: 1px solid #fff;
+  background-color: var(--bg-surface);
+  color: var(--text-primary);
+  border: 1px solid var(--border-subtle);
   margin: 18px auto;
   border-radius: 8px;
   padding: 18px;
