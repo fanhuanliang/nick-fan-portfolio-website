@@ -39,7 +39,7 @@ const Main = () => {
               initial="hidden"
               animate="visible"
               variants={variants}
-              transition={{ duration: 1 }}
+              transition={{ delay: 0.5, duration: 0.6 }}
               id={styleMain.hello}
             >
               Hello, I am
@@ -48,7 +48,7 @@ const Main = () => {
               initial="hidden"
               animate="visible"
               variants={variants}
-              transition={{ duration: 2.5 }}
+              transition={{ delay: 1, duration: 0.6 }}
               id={styleMain.name}
             >
               Nick Fan
@@ -58,7 +58,7 @@ const Main = () => {
               initial="hidden"
               animate="visible"
               variants={variants}
-              transition={{ duration: 3.5 }}
+              transition={{ delay: 1.5, duration: 0.6 }}
               id={styleMain.person_description}
             >
               Web Developer
