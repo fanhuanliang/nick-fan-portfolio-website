@@ -64,3 +64,19 @@ The local Playwright run reported `ERR_NETWORK_ACCESS_DENIED` / `ERR_FAILED` for
 
 ### Remaining Caveat
 Mobile image-modal automation opened the modal but the test runner hung while reading the modal layer geometry afterward. Desktop modal behavior passed, mobile layout/theme passed, and no crash was observed, but this specific mobile modal geometry check was not completed automatically. If visual confidence is needed before marking Phase 4 complete in `ai/plan.md`, manually open the first project image modal on a mobile viewport and confirm the overlay is centered and dismissible.
+
+## 2026-08-25 — Phase 4 mobile image-modal geometry check (closes remaining caveat)
+
+### Method
+Ran a standalone Playwright script against `npm run dev` at a 390×844 mobile viewport (`isMobile`, `hasTouch`), once with `colorScheme: 'light'` and once with `colorScheme: 'dark'`. Clicked the first project's image (`[class*="project_image"] img`) to open `PopImage.js`'s modal, read the `.top_layer` overlay's bounding box via `getBoundingClientRect()`, then clicked the `.bottom_layer` backdrop to dismiss.
+
+### Result — Pass in both themes
+- Overlay bounding box: `left 58.5, right 331.5, top 126.6, bottom 717.4` against a 390×844 viewport.
+  - Horizontal center: (58.5+331.5)/2 = 195.0 = viewport width/2 (195) — exactly centered.
+  - Vertical center: (126.6+717.4)/2 = 422.0 = viewport height/2 (422) — exactly centered.
+  - Size: 273×590.8px = 70vw×70vh as defined in `PopImage.module.css` (`.top_layer { width: 70vw; height: 70vh }`).
+- Clicking the backdrop dismissed the modal in both light and dark (`dismissed: true`).
+- No console errors or page errors in either run.
+
+### Conclusion
+This closes the Phase 4 remaining caveat. `ai/plan.md` Phase 4 updated to `✅ Complete`; `ai/spec.md` known issue #10 updated to `✅ Fixed`.

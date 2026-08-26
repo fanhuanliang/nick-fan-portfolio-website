@@ -105,7 +105,7 @@ Verified: `next build` succeeds (route table now reports `Route (app)` with `/` 
 
 ---
 
-## Phase 4 — Dark Mode ⚠️ Implemented, Finalization Pending
+## Phase 4 — Dark Mode ✅ Complete
 
 **Goal:** Add system-aware dark/light mode with a manual toggle persisted to localStorage.
 
@@ -135,7 +135,9 @@ Implementation is present in the working tree, but Phase 4 should not be treated
 5. Update this section from "Finalization Pending" to "Complete" only after the above checks pass.
 6. Commit the Phase 4 implementation and documentation together.
 
-Known good checks from the last pass: `npm run build` passed after the hydration fix; a browser console check showed no warning/error logs before and after toggling; the toggle changed the root `.dark` class and ARIA label correctly; all sections existed with no horizontal overflow. Because the Phase 4 files are still uncommitted, repeat the checks before the final commit.
+Known good checks from the last pass: `npm run build` passed after the hydration fix; a browser console check showed no warning/error logs before and after toggling; the toggle changed the root `.dark` class and ARIA label correctly; all sections existed with no horizontal overflow.
+
+**Closed 2026-08-25:** the one remaining caveat from the 2026-08-24 pass — automated mobile image-modal overlay geometry — was re-checked manually via Playwright at a 390×844 mobile viewport in both light and dark. The overlay (`PopImage.js`'s `.top_layer`) was exactly centered in the viewport (bounding box center matched viewport center in both axes) at the expected 70vw×70vh size, and clicking the overlay dismissed it in both themes with no console errors. See `audit.md` for details. Phase 4 is now fully complete.
 
 ---
 
@@ -264,10 +266,10 @@ Known good checks from the last pass: `npm run build` passed after the hydration
 | 1 — Deps & Tooling | Medium | Medium | Unblocks everything | ✅ Complete |
 | 2 — Post-Upgrade Regression Fixes | Low | Low | Restores pre-upgrade visual parity | ✅ Complete |
 | 3 — App Router | Medium | Low | Future-proofs architecture | ✅ Complete |
-| 4 — Dark Mode | Low | Low | UX polish | ⚠️ Implemented, final regression + commit pending |
+| 4 — Dark Mode | Low | Low | UX polish | ✅ Complete |
 | 5 — Component Rewrite | High | Low | Code quality, maintainability | Not started |
 | 6 — Performance & SEO | Low | Low | Discoverability | Not started |
 | 7 — Accessibility | Low | Low | Inclusivity, professionalism | Not started |
 | 8 — Deploy | Low | Low | Live site | Not started |
 
-**Recommended next step:** Finish Phase 4 final regression, update this plan/spec/audit if anything changes, and commit. After that, start Phase 5; Phase 5b (Canvas fix) remains the highest-ROI correctness item in the rewrite phase.
+**Recommended next step:** Start Phase 5; Phase 5b (Canvas fix) remains the highest-ROI correctness item in the rewrite phase.
