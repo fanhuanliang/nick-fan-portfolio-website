@@ -2,15 +2,12 @@
 
 import styleMain from "../../styles/Main.module.css";
 import React, { useState, useEffect } from "react";
-import Canvas from "../canvas/Canvas";
+import HeroCanvas from "../HeroCanvas";
 import { ChevronsDown } from "lucide-react";
 import { Link } from "react-scroll";
 import { motion, useAnimation } from "framer-motion";
 
 const Main = () => {
-  useEffect(() => {
-    Canvas();
-  }, []);
   const variants = {
     hidden: { opacity: 0 },
     visible: { opacity: 1 },
@@ -31,7 +28,7 @@ const Main = () => {
 
   return (
     <div className={styleMain.main} id="main">
-      <canvas id="c" className={styleMain.canvas}></canvas>
+      <HeroCanvas className={styleMain.canvas} />
       <div className={styleMain.container_main}>
         <div className={styleMain.row}>
           <div className={styleMain.text_center}>

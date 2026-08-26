@@ -80,3 +80,11 @@ Ran a standalone Playwright script against `npm run dev` at a 390×844 mobile vi
 
 ### Conclusion
 This closes the Phase 4 remaining caveat. `ai/plan.md` Phase 4 updated to `✅ Complete`; `ai/spec.md` known issue #10 updated to `✅ Fixed`.
+
+## 2026-08-25 — Phase 4 documentation consistency cleanup
+
+### Result
+Removed the stale "Current Handoff" checklist from `ai/plan.md` after Phase 4 had already been marked complete. That checklist still said the phase should not be treated as finished, which contradicted the final mobile modal verification above and `ai/spec.md` known issue #10.
+
+### Verification
+Re-ran `npm run build` from the project root so Next.js resolved all local dependencies from this repo's `node_modules`. Build passed successfully with `/` prerendered as a static App Router route.

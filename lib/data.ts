@@ -1,4 +1,29 @@
-export const experienceData = [
+export interface Experience {
+  id: number;
+  company: string;
+  jobTitle: string;
+  duration: string;
+  location: string;
+  descriptions: string[];
+}
+
+export interface Project {
+  id: number;
+  imageLink: string;
+  deployUrl: string;
+  appName: string;
+  description: string;
+  techStacks: string[];
+  github: string;
+  youTubeLink: string;
+}
+
+export interface TechLogo {
+  id: number;
+  link: string;
+}
+
+export const experienceData: Experience[] = [
   {
     id: 111,
     company: "Pacific Specialty Insurance Company",
@@ -85,4 +110,83 @@ export const experienceData = [
       "Consistently participate in requirements definition and story carding.",
     ],
   },
+];
+
+export const projectsData: Project[] = [
+  {
+    id: 1,
+    imageLink: "/images/payment-project.png",
+    deployUrl: "https://payment-system-project-app.herokuapp.com/m",
+    appName: "Payment-System",
+    description:
+      "A full Stack MERN Application to mimic a 'Funds Transfer' like Venmo, by using JWT for authentication and authorization.",
+    techStacks: [
+      "JavaScript",
+      "React",
+      "React Router",
+      "Express",
+      "Redux",
+      "MongoDB Atlas",
+      "Styled Component",
+      "Node.js",
+      "JWT",
+    ],
+    github: "https://github.com/fanhuanliang/Payment-System",
+    youTubeLink: "https://www.youtube.com/watch?v=g4Gut7ZElOE",
+  },
+  {
+    id: 2,
+    imageLink: "/images/movie-search-project.png",
+    deployUrl: "",
+    appName: "Movie Search App",
+    description:
+      "Movie Search Application is a responsive React App using api from OMDb API.",
+    techStacks: [
+      "TypeScript",
+      "React",
+      "Node.js",
+      "Express",
+      "MongoDB",
+      "Redux",
+      "Styled Component",
+    ],
+    github: "https://github.com/fanhuanliang/movie-search-app",
+    youTubeLink: "https://www.youtube.com/watch?v=BiPkyorwQ24",
+  },
+  {
+    id: 3,
+    imageLink: "/images/lego-project.png",
+    deployUrl: "",
+    appName: "LEGO-Main-Product-Review",
+    description:
+      "My first fullstack application with small team. I am responsible for the review component.",
+    techStacks: ["JavaScript", "React", "Node.js", "Express", "sass", "mysql"],
+    github: "https://github.com/fanhuanliang/Main-Product-Review",
+    youTubeLink: "https://www.youtube.com/watch?v=OM_BobTBpiw",
+  },
+  {
+    id: 4,
+    imageLink: "/images/calculator.png",
+    deployUrl: "",
+    appName: "Mini-App-Calculator",
+    description: "Building a mini-app-calculator for fun.",
+    techStacks: ["React", "TypeScript"],
+    github: "https://github.com/fanhuanliang/mini-app-calculator",
+    youTubeLink: "https://www.youtube.com/watch?v=fSRJMxJAP3c",
+  },
+];
+
+export const logo: TechLogo[] = [
+  { id: 1, link: "/images/html-5.svg" },
+  { id: 2, link: "/images/css-logo.svg" },
+  { id: 3, link: "/images/js-logo.svg" },
+  { id: 4, link: "/images/typescript.svg" },
+  { id: 5, link: "/images/react.svg" },
+  { id: 6, link: "/images/nextjs.svg" },
+  { id: 7, link: "/images/nodejs.svg" },
+  { id: 8, link: "/images/express.svg" },
+  { id: 9, link: "/images/mysql.svg" },
+  { id: 10, link: "/images/mongodb.svg" },
+  { id: 11, link: "/images/git.svg" },
+  { id: 12, link: "/images/aws.svg" },
 ];

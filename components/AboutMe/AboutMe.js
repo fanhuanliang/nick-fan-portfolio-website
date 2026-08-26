@@ -1,7 +1,7 @@
 import styleAbout from "../../styles/About.module.css";
 import Image from "next/image";
 import TechStacks from "./TechStacks";
-import { logo } from "./logoLink";
+import { logo } from "../../lib/data";
 
 export default function AboutMe() {
   return (

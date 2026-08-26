@@ -1,5 +1,5 @@
 import React from 'react'
-import {experienceData} from './data'
+import {experienceData} from '../../lib/data'
 import ExperienceCard  from './ExperienceCard'
 import style from '../../styles/Experience.module.css'
 

@@ -126,16 +126,10 @@ Verified: `next build` succeeds (route table now reports `Route (app)` with `/` 
 
 4. **Tailwind dark variants**: not applicable this phase (see step 1) — will apply naturally once Phase 5 converts components to Tailwind utility classes.
 
-### Current Handoff
-Implementation is present in the working tree, but Phase 4 should not be treated as finished until these finalization steps are done:
-1. Run `npm run build`.
-2. Run the dev site and check the browser console for hydration warnings/errors on first load and after toggling the theme.
-3. Verify light/dark theme visually across Hero, Navbar, About, Experience, Projects, project modals, Contact, notice popup, and Footer at desktop and mobile widths.
-4. Verify theme persistence after reload and system-preference behavior when no stored theme exists.
-5. Update this section from "Finalization Pending" to "Complete" only after the above checks pass.
-6. Commit the Phase 4 implementation and documentation together.
+### Final Verification
+Known good checks from the final pass: `npm run build` passed after the hydration fix; a browser console check showed no warning/error logs before and after toggling; the toggle changed the root `.dark` class and ARIA label correctly; all sections existed with no horizontal overflow.
 
-Known good checks from the last pass: `npm run build` passed after the hydration fix; a browser console check showed no warning/error logs before and after toggling; the toggle changed the root `.dark` class and ARIA label correctly; all sections existed with no horizontal overflow.
+Additional verification: `npm run build` was re-run from the project root after the final documentation update and passed successfully with the App Router route table still reporting `/` as a static route.
 
 **Closed 2026-08-25:** the one remaining caveat from the 2026-08-24 pass — automated mobile image-modal overlay geometry — was re-checked manually via Playwright at a 390×844 mobile viewport in both light and dark. The overlay (`PopImage.js`'s `.top_layer`) was exactly centered in the viewport (bounding box center matched viewport center in both axes) at the expected 70vw×70vh size, and clicking the overlay dismissed it in both themes with no console errors. See `audit.md` for details. Phase 4 is now fully complete.
 
