@@ -18,7 +18,7 @@ _Updated after Phase 1 (dependency/tooling upgrade) — see plan.md._
 | UI Library | React 19.2.8 | |
 | Animation | framer-motion 13.x | `yoyo` transition fixed → `repeat`/`repeatType` |
 | Styling | CSS Modules + Tailwind CSS v4 (tooling only) | Semantic UI removed entirely; Tailwind imported without Preflight so no component uses its utility classes yet |
-| Language | JavaScript, with TypeScript tooling installed (`tsconfig.json`, TS 5) | No files renamed to `.ts`/`.tsx` yet — that's Phase 5 |
+| Language | JavaScript + targeted TypeScript | TypeScript tooling is installed; `lib/data.ts` and `components/HeroCanvas.tsx` are now converted as part of Phase 5a/5b |
 | Email | @emailjs/browser | |
 | Icons | lucide-react | |
 | Linting | ESLint 8.57 + eslint-config-next 15 | Not yet on ESLint 9/flat-config, to avoid an unplanned migration |
@@ -33,19 +33,19 @@ Single-page app (`app/page.js`) with 5 sections rendered top-to-bottom:
 
 ### Known Issues
 1. ✅ **Fixed (Phase 1)** — `framer-motion` v4 `yoyo` transition was deprecated; replaced by `repeat: Infinity, repeatType: "reverse"` in v5+
-2. Canvas (`Canvas.js`) references the global `c` by bare ID — breaks in SSR and strict mode. Still open; deferred to Phase 5b. React 19 StrictMode may double-run the animation loop in dev (no cleanup exists) — a visible symptom of this same bug, not a new one.
+2. ✅ **Fixed (Phase 5b)** — legacy `components/canvas/Canvas.js` referenced the global `c` by bare ID and had no React cleanup. Replaced with `components/HeroCanvas.tsx`, using `useRef<HTMLCanvasElement>`, `useEffect`, `cancelAnimationFrame`, and `ResizeObserver`. Regression verified that both the canvas CSS box and drawing buffer fill the hero at desktop and mobile sizes.
 3. ✅ **Fixed (Phase 1)** — `emailjs-com` package was deprecated; replaced by `@emailjs/browser`
 4. Heroku deploy URL for Payment System project is dead (Heroku ended free tier). Still open.
 5. ✅ **Fixed (Phase 1)** — `Home.module.css` scaffold file deleted
 6. ✅ **Fixed (Phase 1)** — `pages/api/hello.js` scaffold deleted
 7. ✅ **Fixed (Phase 1)** — `public/vercel.svg` scaffold deleted
 8. Experience duration still reads "August 2020 - Present" — may need updating. Still open.
-9. No TypeScript coverage across components. **Partially addressed (Phase 1)** — tooling installed (`tsconfig.json`, TS 5), but no files converted yet; full conversion is Phase 5.
+9. No full TypeScript coverage across components. **Partially addressed (Phase 5a/5b)** — shared data now lives in `lib/data.ts`, and the hero canvas is `components/HeroCanvas.tsx`; remaining component conversion is still Phase 5.
 10. ✅ **Fixed (Phase 4)** — dark mode added: CSS custom properties + `.dark` class toggle (not Tailwind `dark:` classes, since no component uses Tailwind utility classes yet — see plan.md Phase 4 execution note), toggle button in Navbar, persisted to localStorage, respects `prefers-color-scheme` on first visit. Final regression (including the mobile image-modal overlay check) passed 2026-08-25.
 11. SEO is minimal (no Open Graph, no twitter cards, no structured data). Still open; planned for Phase 6.
 12. No accessibility audit (missing ARIA labels, focus management, skip nav). Still open; planned for Phase 7.
 13. ✅ **Fixed (Phase 2)** — `next/image` used with fixed pixel dimensions and no CSS constraint in three places (`AboutMe.js` `height={1000} width={1000}`, `Project.js` `height={375} width={600}`, `TechStacks.js` `height={100} width={100}`); all not responsive after Next 13+ removed `next/image`'s old default `max-width:100%; height:auto` behavior. Fixed via responsive wrappers/CSS constraints (`AboutMe` uses `fill`, project images and tech logos are constrained in CSS).
-14. AWS logo exists in `/public/images/aws.svg` but is absent from the tech stack list. Still open.
+14. ✅ **Fixed (Phase 5a)** — AWS logo now appears in the centralized tech stack list in `lib/data.ts`.
 
 ### Issues found during Phase 1/2 execution (not in the original audit)
 15. ✅ **Fixed (Phase 2)** — `semantic-ui-css` had been silently supplying the site's actual body/heading font (`body{font-family:Lato,...}`, plus its own Google Fonts import) the whole time; `globals.css` never declared this itself. Removing Semantic UI in Phase 1 uncovered this. Fixed by adding an explicit Lato import + `font-family` rule to `globals.css`.

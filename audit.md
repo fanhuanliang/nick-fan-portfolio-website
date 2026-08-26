@@ -88,3 +88,34 @@ Removed the stale "Current Handoff" checklist from `ai/plan.md` after Phase 4 ha
 
 ### Verification
 Re-ran `npm run build` from the project root so Next.js resolved all local dependencies from this repo's `node_modules`. Build passed successfully with `/` prerendered as a static App Router route.
+
+## 2026-08-25 — Phase 5a/5b regression pass
+
+### Scope
+Added `npm run test:regression`, backed by `scripts/regression-check.cjs`, and ran it against the local Next.js dev server at `http://localhost:3000`.
+
+The regression covers:
+1. Desktop 1440×900 in light and dark.
+2. Mobile 390×844 in light and dark.
+3. Section visibility for Hero, About, Experience, Projects, and Contact.
+4. Horizontal overflow checks.
+5. Hero canvas CSS sizing, drawing-buffer sizing, and nonblank pixel output.
+6. Manual theme toggle, root `.dark` class behavior, ARIA label changes, and localStorage persistence after reload.
+7. System dark preference with no stored user choice.
+8. Project image modal centering and dismissal.
+9. Contact empty-form validation notice.
+
+### Findings
+The first regression run caught an incomplete hero canvas conversion: `components/HeroCanvas.tsx` existed, but `styles/Main.module.css` only absolutely positioned the canvas at `left: 0; top: 0` and did not force the canvas element to fill the hero. The rendered CSS box and drawing buffer could diverge. Fixed by setting `.canvas` to `inset: 0`, `width: 100%`, `height: 100%`, and `display: block`; the regression now verifies both the CSS box and drawing buffer match the hero section.
+
+Playwright's physical click action can wait awkwardly when this app opens or closes full-screen overlays during the click sequence, so the modal open/dismiss and contact validation checks use DOM-triggered clicks while still asserting the resulting visible UI state.
+
+### Result
+`npm run test:regression` passed:
+- `desktop light`
+- `desktop dark`
+- `mobile light`
+- `mobile dark`
+- `system preference dark`
+
+Also re-ran `npm run build` and `npm run lint`; both passed. `next lint` reports its existing deprecation warning for Next.js 16 migration, but no ESLint warnings or errors.

@@ -144,16 +144,16 @@ Additional verification: `npm run build` was re-run from the project root after 
 ### Steps
 
 #### 5a. Data layer
-- Move all data files to `lib/data.ts`
-- Add TypeScript interfaces: `Experience`, `Project`, `TechLogo`
-- Add `aws` to tech stack logos list
+- ✅ Move all data files to `lib/data.ts`
+- ✅ Add TypeScript interfaces: `Experience`, `Project`, `TechLogo`
+- ✅ Add `aws` to tech stack logos list
 
 #### 5b. Canvas (Hero background)
-- Rewrite `Canvas.js` as a proper React component (`components/HeroCanvas.tsx`)
-- Use `useRef<HTMLCanvasElement>` instead of bare global `c`
-- Wrap animation loop in `useEffect` with cleanup (`cancelAnimationFrame`)
-- Add resize observer instead of `window.addEventListener`
-- Still open as of Phase 2: React 19 StrictMode may double-run this loop in dev (no cleanup exists today) — noted but deliberately not fixed outside this phase.
+- ✅ Rewrite `Canvas.js` as a proper React component (`components/HeroCanvas.tsx`)
+- ✅ Use `useRef<HTMLCanvasElement>` instead of bare global `c`
+- ✅ Wrap animation loop in `useEffect` with cleanup (`cancelAnimationFrame`)
+- ✅ Add resize observer instead of `window.addEventListener`
+- ✅ Ensure the canvas CSS box and drawing buffer both fill the hero section at desktop and mobile sizes
 
 #### 5c. Navbar
 - Convert `Navbar.tsx`, `Navigation.tsx`, `NavLinks.tsx`
@@ -261,9 +261,9 @@ Additional verification: `npm run build` was re-run from the project root after 
 | 2 — Post-Upgrade Regression Fixes | Low | Low | Restores pre-upgrade visual parity | ✅ Complete |
 | 3 — App Router | Medium | Low | Future-proofs architecture | ✅ Complete |
 | 4 — Dark Mode | Low | Low | UX polish | ✅ Complete |
-| 5 — Component Rewrite | High | Low | Code quality, maintainability | Not started |
+| 5 — Component Rewrite | High | Low | Code quality, maintainability | In progress — 5a/5b complete |
 | 6 — Performance & SEO | Low | Low | Discoverability | Not started |
 | 7 — Accessibility | Low | Low | Inclusivity, professionalism | Not started |
 | 8 — Deploy | Low | Low | Live site | Not started |
 
-**Recommended next step:** Start Phase 5; Phase 5b (Canvas fix) remains the highest-ROI correctness item in the rewrite phase.
+**Recommended next step:** Continue Phase 5 with 5c Navbar conversion, while preserving the regression coverage in `npm run test:regression`.
