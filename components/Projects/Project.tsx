@@ -36,6 +36,7 @@ const Project = ({ projectData }: ProjectProps) => {
             className="h-auto max-w-full"
             height={375}
             width={600}
+            sizes="(max-width: 600px) 100vw, 320px"
             src={projectData.imageLink}
             alt={`${projectData.appName} preview`}
           />
