@@ -119,3 +119,32 @@ Playwright's physical click action can wait awkwardly when this app opens or clo
 - `system preference dark`
 
 Also re-ran `npm run build` and `npm run lint`; both passed. `next lint` reports its existing deprecation warning for Next.js 16 migration, but no ESLint warnings or errors.
+
+## 2026-08-26 — Phase 5 component rewrite completion
+
+### Scope
+Completed the remaining Phase 5 rewrite work:
+1. Converted App Router files, `ThemeProvider`, and all components from `.js` to `.tsx`/`.ts`.
+2. Replaced all component CSS Modules with Tailwind utility classes.
+3. Removed all `styles/*.module.css` files; `styles/globals.css` is now the only app stylesheet.
+4. Replaced `react-scroll` with plain hash anchors plus global `scroll-behavior: smooth` and section `scroll-margin-top`.
+5. Replaced `react-player` with a direct YouTube iframe modal.
+6. Removed unused/dead Heroku deploy URL data from `lib/data.ts`.
+7. Restored Footer's LinkedIn link and added clearer ARIA labels/focus rings across converted controls.
+8. Added typed tech stack labels for icon alt text and hover tooltips.
+9. Blanked the Contact section by user request, preserving the `#contact` anchor and Footer while removing the EmailJS form, notice modal, config file, and dependency.
+
+### Verification
+Passed:
+- `npm run build` — `/` remains a static App Router route; first-load JS is 160 kB.
+- `npm run lint` — no ESLint warnings or errors. The command still reports Next's existing `next lint` deprecation warning for future Next 16 migration.
+- `npm run test:regression` — passed `desktop light`, `desktop dark`, `mobile light`, `mobile dark`, and `system preference dark`.
+- `rg --files -g "*.js" -g "*.jsx" -g "*.module.css" app components styles lib` — no app/component JavaScript files and no CSS Modules remain.
+
+### Notes
+`playwright` is now an explicit dev dependency because the regression script imports it directly; relying on an incidental transitive install made `npm run test:regression` non-reproducible.
+
+The shell still prints the existing PowerShell profile parse error from `C:\Users\fanhu\Documents\PowerShell\Microsoft.PowerShell_profile.ps1`, but it did not block build, lint, or regression commands.
+
+### Remaining Follow-Ups
+Phase 6 owns performance/SEO work, including replacing the CSS Google Font `@import` with `next/font`, reviewing image priorities/sizes, and adding sitemap/robots/Open Graph assets. Phase 7 owns deeper accessibility work, including possible `<dialog>`-based modal focus management. Contact form loading/error/accessibility work is no longer applicable unless a new contact surface is added later.

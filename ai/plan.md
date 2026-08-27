@@ -85,7 +85,7 @@ but should be completed before the next phase begins.
      layout.js       ← root layout (replaces _app.js + <Head>)
      page.js         ← home page (replaces pages/index.js)
    ```
-   - *Execution note:* kept `.js` (not `.tsx`) — TypeScript conversion stays scoped to Phase 5, per Phase 1's original decision. `globals.css` is imported directly in `layout.js`, same as it was in `_app.js`; no separate Tailwind entry point needed since Tailwind's imports already live inside `globals.css` itself (from Phase 1).
+   - *Execution note:* initially kept `.js` during Phase 3; converted to `.tsx` in Phase 5. `globals.css` is imported directly in `layout.tsx`, same as it was in `_app.js`; no separate Tailwind entry point needed since Tailwind's imports already live inside `globals.css` itself (from Phase 1).
 
 2. **Move metadata to `layout.js`**
    - Migrated title, description, keywords, Open Graph, and Twitter metadata to the App Router `Metadata` export.
@@ -95,7 +95,7 @@ but should be completed before the next phase begins.
 
 3. **Convert `_app.js` logic into `layout.js`**
    - Global CSS import moved here directly.
-   - `ThemeProvider` wrapper is *not* added yet — that's Phase 4's job; this step's original wording was a forward-reference, not a Phase 3 deliverable.
+   - `ThemeProvider` wrapper was added in Phase 4 and converted to TypeScript in Phase 5.
 
 4. **Delete `pages/` directory** — done in the same commit as steps 1-2 (not staged separately), since `app/page.js` and `pages/index.js` would otherwise both resolve to `/` and Next.js hard-errors on the route conflict. `pages/_app.js`, `pages/index.js`, and the now-empty `pages/` directory were all removed together.
 
@@ -113,7 +113,7 @@ Verified: `next build` succeeds (route table now reports `Route (app)` with `/` 
 1. **Configure dark mode**
    - *Execution note:* no component uses Tailwind utility classes yet (Phase 5's job), so `darkMode: 'class'`-style config alone would be inert — it wouldn't change anything visible today. Instead: 16 semantic CSS custom properties (`--bg-page`, `--bg-surface`, `--bg-nav`, `--text-primary`, etc.) added to `styles/globals.css`, defined in `:root` (light) and overridden in `:root.dark`. All ~45 scattered hardcoded colors across 9 CSS Module files were mapped to these variables (a few — `Main.module.css`'s `#7facfafa` "Nick Fan" accent, and the fully self-contained gradient buttons in `Contact.module.css`/`Project.module.css` — were deliberately left hardcoded; see plan details in git history/PR for the full per-file rationale). Also added Tailwind v4's `@custom-variant dark (&:where(.dark, .dark *));` directive so Phase 5's future Tailwind-class conversion already has working dark-mode plumbing to consume — inert today, since nothing uses Tailwind classes yet.
 
-2. **Create `ThemeProvider` component** (`components/ThemeProvider.js`, plain `.js` per this project's established convention — TS conversion is Phase 5 only)
+2. **Create `ThemeProvider` component** (`components/ThemeProvider.tsx`)
    - Uses a deterministic initial `"light"` state so the server render and first client render match.
    - Syncs the actual document theme inside `useEffect` after hydration. Do not move `document`, `window`, `localStorage`, or `matchMedia` reads back into render or a `useState` initializer — that caused the Phase 4 hydration error recorded in `audit.md`.
    - A blocking inline script in `app/layout.js` applies the `dark` class before hydration to avoid a flash-of-wrong-theme without making `layout.js` a Client Component. `layout.js` must stay a Server Component because it exports `metadata` and `viewport`.
@@ -122,7 +122,7 @@ Verified: `next build` succeeds (route table now reports `Route (app)` with `/` 
    - Exposes `useTheme()` hook returning `{ theme, toggleTheme }`
 
 3. **Add toggle button to Navbar**
-   - New `components/Navbar/ThemeToggle.js` (client component) using lucide-react `Sun`/`Moon` with a framer-motion crossfade, wired into `Navbar.js` as a third child of `.primary_nav` (`Navbar.js` itself stays a Server Component, per Phase 3's boundary discipline — no function props cross into `ThemeToggle`)
+   - New `components/Navbar/ThemeToggle.tsx` (client component) using lucide-react `Sun`/`Moon` with a framer-motion crossfade, wired into `Navbar.tsx` as a third child of the primary nav container.
 
 4. **Tailwind dark variants**: not applicable this phase (see step 1) — will apply naturally once Phase 5 converts components to Tailwind utility classes.
 
@@ -135,7 +135,7 @@ Additional verification: `npm run build` was re-run from the project root after 
 
 ---
 
-## Phase 5 — Component Rewrite (TypeScript + Tailwind)
+## Phase 5 — Component Rewrite (TypeScript + Tailwind) ✅ Complete
 
 **Goal:** Convert all components from JS + CSS Modules to TSX + Tailwind. Delete all `styles/*.module.css` files when done.
 
@@ -156,42 +156,50 @@ Additional verification: `npm run build` was re-run from the project root after 
 - ✅ Ensure the canvas CSS box and drawing buffer both fill the hero section at desktop and mobile sizes
 
 #### 5c. Navbar
-- Convert `Navbar.tsx`, `Navigation.tsx`, `NavLinks.tsx`
-- Replace Semantic UI grid with Tailwind flex
-- Keep `hamburger-react` (or replace with a custom Tailwind hamburger)
-- Add smooth scroll behavior via CSS `scroll-behavior: smooth` + anchor IDs
+- ✅ Convert `Navbar.tsx`, `Navigation.tsx`, `NavLinks.tsx`, `MobileNavigation.tsx`, and `ThemeToggle.tsx`
+- ✅ Replace CSS Modules with Tailwind flex/layout classes
+- ✅ Keep `hamburger-react`, with explicit labels for open/close states
+- ✅ Add smooth scroll behavior via CSS `scroll-behavior: smooth` + anchor IDs
 
 #### 5d. Main (Hero section)
-- Convert `Main.tsx`
-- Use updated framer-motion API for stagger animation on name/title
-- Replace `react-scroll` `<Link>` with a plain `<a href="#about">` (CSS smooth scroll)
+- ✅ Convert `Main.tsx`
+- ✅ Keep the updated framer-motion animation behavior
+- ✅ Replace `react-scroll` `<Link>` with a plain `<a href="#about">` (CSS smooth scroll)
 
 #### 5e. AboutMe
-- Convert `AboutMe.tsx`, `TechStacks.tsx`
-- Use `next/image` with `fill` prop + aspect ratio wrapper instead of fixed dimensions — Phase 2 already fixed the acute "image fills the whole section" regression with a CSS width/height constraint; this step is the longer-term, more idiomatic replacement, not an urgent fix.
-- Add hover tooltip labels to tech stack icons
+- ✅ Convert `AboutMe.tsx`, `TechStacks.tsx`
+- ✅ Use `next/image` with `fill` prop + aspect ratio wrapper for the profile image
+- ✅ Add hover tooltip labels and accurate alt text to tech stack icons
 
 #### 5f. Experience
-- Convert `Experience.tsx`, `ExperienceCard.tsx`
-- Redesign as a vertical timeline with Tailwind
-- Update dates in `data.ts` if needed
+- ✅ Convert `Experience.tsx`, `ExperienceCard.tsx`
+- ✅ Redesign as a vertical timeline with Tailwind
+- ✅ Leave dates unchanged pending a content-authoritative update
 
 #### 5g. Projects
-- Convert `Projects.tsx`, `Project.tsx`, `Popup.tsx`, `PopImage.tsx`
-- Replace `react-player` popup with direct YouTube embed or link
-- Fix/remove dead Heroku deploy URL
-- Consider replacing Popup with a `<dialog>` element for accessibility
-- Also clean up `Project.js`'s dead `className="project_card"` (a raw string that's never matched the CSS-Modules-hashed class, pre-existing no-op) while touching this file
+- ✅ Convert `Projects.tsx`, `Project.tsx`, `Popup.tsx`, `PopImage.tsx`
+- ✅ Replace `react-player` popup with a direct YouTube iframe embed
+- ✅ Remove unused/dead Heroku deploy URL data
+- ✅ Clean up `Project.js`'s dead raw `className="project_card"` during the TSX rewrite
+- Deferred: consider replacing Popup with a `<dialog>` element during Phase 7 accessibility work
 
 #### 5h. Contact
-- Convert `Contact.tsx`, `Notice.tsx`
-- Add loading spinner state during email send
-- Add proper error boundaries
-- Improve form accessibility (label `for` attributes, ARIA)
+- ✅ Convert `Contact.tsx`
+- ✅ Blank the Contact section by user request, keeping the `#contact` anchor and Footer
+- ✅ Remove EmailJS form, notice modal, config file, and `@emailjs/browser` dependency
+- Superseded by user request: loading/error/form-accessibility work is no longer applicable unless a new contact surface is added later
 
 #### 5i. Footer
-- Convert `Footer.tsx`
-- Update social links (GitHub, LinkedIn)
+- ✅ Convert `Footer.tsx`
+- ✅ Update social links (GitHub, LinkedIn, email)
+
+### Final Verification
+Verified 2026-08-26:
+- `npm run build` passed; `/` remains a static App Router route and first-load JS is 160 kB.
+- `npm run lint` passed with no warnings/errors, aside from Next's existing `next lint` deprecation notice.
+- `npm run test:regression` passed desktop light, desktop dark, mobile light, mobile dark, and system-preference dark scenarios.
+- `rg --files -g "*.js" -g "*.jsx" -g "*.module.css" app components styles lib` returned no app/component JS files and no CSS Modules.
+- Removed `react-scroll` and `react-player` dependencies after replacing their usage.
 
 ---
 
@@ -239,10 +247,9 @@ Additional verification: `npm run build` was re-run from the project root after 
 **Goal:** Live on Vercel with environment variables properly configured.
 
 ### Steps
-1. Move EmailJS credentials (`serviceID`, `templateID`, `userID`) to `.env.local`
-   - Prefix with `NEXT_PUBLIC_` for client-side access
-   - Add `.env.local` to `.gitignore` (verify it's already there)
-   - Update `emailjs.config.ts` to read from `process.env`
+1. Environment variables
+   - No EmailJS variables are currently needed because the Contact form was removed in Phase 5
+   - Add future contact/provider keys to `.env.local` if a new contact surface is introduced
 
 2. Add Vercel project and connect to GitHub repo
    - Set environment variables in Vercel dashboard
@@ -261,9 +268,9 @@ Additional verification: `npm run build` was re-run from the project root after 
 | 2 — Post-Upgrade Regression Fixes | Low | Low | Restores pre-upgrade visual parity | ✅ Complete |
 | 3 — App Router | Medium | Low | Future-proofs architecture | ✅ Complete |
 | 4 — Dark Mode | Low | Low | UX polish | ✅ Complete |
-| 5 — Component Rewrite | High | Low | Code quality, maintainability | In progress — 5a/5b complete |
+| 5 — Component Rewrite | High | Low | Code quality, maintainability | ✅ Complete |
 | 6 — Performance & SEO | Low | Low | Discoverability | Not started |
 | 7 — Accessibility | Low | Low | Inclusivity, professionalism | Not started |
 | 8 — Deploy | Low | Low | Live site | Not started |
 
-**Recommended next step:** Continue Phase 5 with 5c Navbar conversion, while preserving the regression coverage in `npm run test:regression`.
+**Recommended next step:** Start Phase 6 Performance & SEO. Highest-ROI first items: replace CSS font `@import` with `next/font`, add priority/sizing review for above-fold images, and create sitemap/robots metadata.
