@@ -203,28 +203,39 @@ Verified 2026-08-26:
 
 ---
 
-## Phase 6 — Performance & SEO
+## Phase 6 — Performance & SEO ✅ Complete
 
 **Goal:** Achieve Lighthouse ≥ 95, full SEO coverage.
 
 ### Steps
 1. **Images**
-   - Audit all `<img>` and `next/image` usages
-   - Add `priority` prop to hero/above-fold images
-   - Convert `.png` assets to `.webp` where possible
+   - ✅ Audited all `next/image` usages (`AboutMe.tsx`, `Project.tsx`, `TechStacks.tsx`). No `<img>` tags exist outside `next/image`.
+   - Deferred/not applicable: no `priority` prop added anywhere — the Hero section has no image (canvas + text), and `AboutMe`'s profile photo sits below `Main`'s `min-h-screen`, so it isn't the LCP element. Adding `priority` to a below-the-fold image would only hurt LCP.
+   - Deferred: `.png` → `.webp` source conversion skipped as unnecessary — `next.config.js` doesn't set `images.unoptimized`, so Next's built-in Image Optimization API already re-encodes and serves `webp`/`avif` on demand at request time regardless of the source file format.
+   - ✅ Added `sizes="(max-width: 600px) 100vw, 320px"` to `Project.tsx`'s card image — it previously had no `sizes`, so Next only generated 1x/2x variants of the full 600w intrinsic size instead of a variant matching the actual rendered card width.
+   - ✅ Deleted `public/images/selfie.png` (8.2 MB) — an unused duplicate of `IMG_1857.png` (same 3126×3443 dimensions), not referenced anywhere in `lib/data.ts` or components.
 
 2. **Fonts**
-   - Add `next/font` with a modern Google Font (e.g., Inter or Geist)
-   - Remove any `@import` font URLs from CSS — note this now includes the Lato import added in Phase 2, not just the original scaffold fonts
+   - ✅ Replaced the Google Fonts `@import` in `globals.css` (added in Phase 2 to restore the Lato font Semantic UI used to silently supply) with `next/font/google`'s `Lato` in `app/layout.tsx`, exposed as the `--font-lato` CSS variable via `variable: "--font-lato"` and applied on `<html>`.
+   - ✅ `globals.css`'s two `font-family` declarations (`html, body` and the heading rule) now reference `var(--font-lato)` instead of the literal `Lato` name, so they stay tied to the self-hosted font instead of an external CSS import.
+   - Font is now self-hosted at build time (no runtime request to `fonts.googleapis.com`) with an automatic size-adjusted fallback face, eliminating the external font request + layout shift risk of the old `@import`.
 
 3. **Bundle analysis**
-   - `npm install -D @next/bundle-analyzer`
-   - Identify and eliminate heavy unused imports
+   - ✅ Installed `@next/bundle-analyzer` (dev dependency) and `cross-env` (dev dependency, needed because `ANALYZE=true next build` doesn't work in the project's default PowerShell shell on Windows) and wired both into `next.config.js` / a new `analyze` npm script.
+   - ✅ Ran `npm run analyze`: first-load JS for `/` is 158 kB (103 kB shared framework/Next runtime + 55.4 kB page-specific), effectively unchanged from Phase 5's 160 kB baseline.
+   - Finding: no heavy or unused imports to eliminate. All three non-framework runtime dependencies (`framer-motion`, `lucide-react`, `hamburger-react`) are actively used, and `lucide-react`'s icon imports are already per-icon (tree-shakeable ESM), so there's nothing to trim without removing a feature.
 
 4. **SEO**
-   - Verify Open Graph image renders correctly
-   - Add `robots.txt` and `sitemap.xml` via Next.js route handlers
-   - Validate JSON-LD with Google's Rich Results Test
+   - ✅ Added `app/robots.ts` (allow-all, points at the sitemap) and `app/sitemap.ts` (single `/` entry) using Next's App Router metadata route file conventions.
+   - ✅ Added `app/opengraph-image.tsx` using `next/og`'s `ImageResponse` to generate a 1200×630 OG image at build time (statically prerendered — confirmed via `npm run build`'s route table, no edge runtime needed). This also satisfies the Twitter card image, since `twitter.card: "summary_large_image"` was already set in `layout.tsx` and Twitter's crawler falls back to `og:image` when no explicit `twitter:image` is set.
+   - Verified via `curl` against a local build: `og:image:width`/`og:image:height` meta tags render correctly, `/robots.txt` and `/sitemap.xml` both return 200 with correct content types.
+   - Deferred: validating the JSON-LD against Google's Rich Results Test requires a publicly reachable URL, which doesn't exist until Phase 8 deploy — do this as a Phase 8 post-deploy check.
+
+### Final Verification
+- `npm run build` passed; `/` remains a static App Router route at 158 kB first-load JS; `/opengraph-image`, `/robots.txt`, and `/sitemap.xml` all prerender as static routes.
+- `npm run lint` passed with no warnings/errors (aside from the existing `next lint` → Next 16 deprecation notice).
+- `npm run test:regression` passed `desktop light`, `desktop dark`, `mobile light`, `mobile dark`, and `system preference dark`.
+- Verified via a headless Playwright check that `next/font`'s Lato actually resolves (`getComputedStyle(document.body).fontFamily` → `Lato, "Lato Fallback", "Helvetica Neue", Arial, Helvetica, sans-serif`) with zero console errors.
 
 ---
 
@@ -269,8 +280,8 @@ Verified 2026-08-26:
 | 3 — App Router | Medium | Low | Future-proofs architecture | ✅ Complete |
 | 4 — Dark Mode | Low | Low | UX polish | ✅ Complete |
 | 5 — Component Rewrite | High | Low | Code quality, maintainability | ✅ Complete |
-| 6 — Performance & SEO | Low | Low | Discoverability | Not started |
+| 6 — Performance & SEO | Low | Low | Discoverability | ✅ Complete |
 | 7 — Accessibility | Low | Low | Inclusivity, professionalism | Not started |
 | 8 — Deploy | Low | Low | Live site | Not started |
 
-**Recommended next step:** Start Phase 6 Performance & SEO. Highest-ROI first items: replace CSS font `@import` with `next/font`, add priority/sizing review for above-fold images, and create sitemap/robots metadata.
+**Recommended next step:** Start Phase 7 Accessibility Audit.

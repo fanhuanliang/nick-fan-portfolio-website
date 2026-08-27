@@ -148,3 +148,31 @@ The shell still prints the existing PowerShell profile parse error from `C:\User
 
 ### Remaining Follow-Ups
 Phase 6 owns performance/SEO work, including replacing the CSS Google Font `@import` with `next/font`, reviewing image priorities/sizes, and adding sitemap/robots/Open Graph assets. Phase 7 owns deeper accessibility work, including possible `<dialog>`-based modal focus management. Contact form loading/error/accessibility work is no longer applicable unless a new contact surface is added later.
+
+## 2026-08-26 — Phase 6 performance & SEO
+
+### Scope
+1. Replaced the `globals.css` Google Fonts `@import` for Lato (added in Phase 2) with `next/font/google`, exposed as `--font-lato` and applied on `<html>` in `app/layout.tsx`.
+2. Added `sizes` to `Project.tsx`'s card image (previously missing, so Next only generated 1x/2x of the full 600w source instead of a variant sized to the actual card width).
+3. Deleted `public/images/selfie.png`, an unused 8.2 MB duplicate of `IMG_1857.png` not referenced anywhere in the codebase.
+4. Installed `@next/bundle-analyzer` + `cross-env` (the latter needed for `ANALYZE=true` to work in the project's PowerShell shell) and added an `analyze` npm script.
+5. Added `app/robots.ts`, `app/sitemap.ts`, and `app/opengraph-image.tsx` (build-time-generated 1200×630 OG image via `next/og`).
+
+### Process note
+A leftover `next dev` process from an earlier session was holding `.next/trace` open (`EPERM` on `npm run analyze`). Confirmed with the user before killing it (`taskkill /F /PID 13032 /T`); by the time the kill ran the process had already exited on its own, but the intent to stop it was still confirmed first. `.next` was then removable and the build proceeded.
+
+### Findings
+- Bundle analysis (`npm run analyze`): `/` first-load JS is 158 kB (103 kB shared + 55.4 kB page), essentially flat versus Phase 5's 160 kB. No heavy/unused imports found — `framer-motion`, `lucide-react`, and `hamburger-react` are all actively used, and `lucide-react` imports are already per-icon.
+- `next.config.js` doesn't set `images.unoptimized`, so Next's Image Optimization API already serves `webp`/`avif` on demand regardless of source `.png` format — skipped manual source-file conversion as redundant work.
+- No `priority` image was added: the Hero section has no `<Image>` (canvas + text only), and `AboutMe`'s profile photo is below `Main`'s `min-h-screen`, so neither is the page's LCP element.
+- `app/opengraph-image.tsx` initially used `runtime = "edge"`, which forced `/opengraph-image` to server-render on demand instead of prerendering — removed the runtime override so it prerenders statically at build time (confirmed via the `next build` route table).
+
+### Verification
+- `npm run build` passed: `/` static at 158 kB first-load JS; `/opengraph-image`, `/robots.txt`, `/sitemap.xml` all prerender as static routes.
+- `npm run lint` passed with no warnings/errors.
+- `npm run test:regression` passed all 5 scenarios (`desktop light`, `desktop dark`, `mobile light`, `mobile dark`, `system preference dark`).
+- `curl` against a local build confirmed `/opengraph-image` returns `200 image/png`, `/robots.txt` returns `200 text/plain`, `/sitemap.xml` returns `200 application/xml`, and the rendered page's `<head>` includes correct `og:image:width`/`og:image:height` tags.
+- Headless Playwright check confirmed `next/font`'s Lato actually resolves in `getComputedStyle(document.body).fontFamily` (`Lato, "Lato Fallback", "Helvetica Neue", Arial, Helvetica, sans-serif`) with zero console errors.
+
+### Remaining Follow-Ups
+Phase 7 owns accessibility work (skip link, focus rings, `aria-label` audit, contrast check, keyboard nav, `alt` text audit, possible `<dialog>`-based modal focus management). Phase 8 owns validating the JSON-LD against Google's Rich Results Test, which needs a public URL that doesn't exist until after deploy.
