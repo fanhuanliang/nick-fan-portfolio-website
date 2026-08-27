@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "test:regression": "node scripts/regression-check.cjs"
+    "test:regression": "node scripts/regression-check.cjs",
+    "analyze": "cross-env ANALYZE=true next build"
   },
   "dependencies": {
     "@tailwindcss/postcss": "^4.3.3",
@@ -21,9 +22,11 @@
     "tailwindcss": "^4.3.3"
   },
   "devDependencies": {
+    "@next/bundle-analyzer": "^16.3.3",
     "@types/node": "^26.2.0",
     "@types/react": "^19.2.18",
     "@types/react-dom": "^19.2.4",
+    "cross-env": "^10.1.0",
     "eslint": "^8.57.1",
     "eslint-config-next": "^15.5.23",
     "playwright": "^1.62.1",
