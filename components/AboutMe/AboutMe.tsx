@@ -1,0 +1,49 @@
+import Image from "next/image";
+import TechStacks from "./TechStacks";
+import { logo } from "../../lib/data";
+
+export default function AboutMe() {
+  return (
+    <div
+      className="min-h-screen bg-[linear-gradient(var(--bg-about),var(--bg-about))] bg-fixed bg-center bg-no-repeat py-[2%]"
+      id="about"
+    >
+      <div className="flex flex-col items-center min-[601px]:flex-row min-[601px]:items-stretch">
+        <div className="relative mx-auto mt-8 h-[120px] w-[120px] flex-[0_0_120px] overflow-hidden rounded-full min-[601px]:m-[34px] min-[601px]:h-[150px] min-[601px]:w-[150px] min-[601px]:flex-[0_0_150px]">
+          <Image
+            src="/images/IMG_1857.png"
+            alt="Nick Fan"
+            fill
+            sizes="(max-width: 600px) 120px, 150px"
+            className="object-cover"
+          />
+        </div>
+        <div className="mx-0 my-4 px-[15px] min-[601px]:mx-auto min-[601px]:my-[34px]">
+          <h1 className="mb-[10px] mt-5 p-[10px] text-left font-[Verdana,'Slabo',Helvetica,serif] text-[1.8rem] font-bold italic leading-[1.1] min-[601px]:text-[2.6rem]">
+            About Me
+          </h1>
+          <p className="w-full px-5 py-5 font-['Comic_Sans_MS',Verdana,Arial,Tahoma,serif] text-[1.05rem] leading-[1.55em] min-[601px]:pr-[120px] min-[601px]:pt-4 min-[601px]:text-[1.25rem]">
+            I am a full-stack software engineer, and pursuing my passion for tech
+            through a full-time opportunity as a Software Engineer. I like solving
+            problems and delivering clean code on time. I particularly enjoy
+            working on the front end, especially with React, and love the
+            satisfaction that comes with bringing an idea to life.
+            <br />
+            When I am not coding, I enjoy playing basketball, cooking, traveling,
+            and playing guitar.
+          </p>
+        </div>
+      </div>
+      <div className="flex flex-col content-center justify-center text-center">
+        <h1 className="mb-[10px] mt-5 pb-3 text-[2.2rem] leading-[1.1]">
+          Technologies
+        </h1>
+        <div className="mx-[60px] my-5 flex flex-row flex-wrap content-center justify-center text-center">
+          {logo.map((item) => (
+            <TechStacks key={item.id} tech={item} />
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}

@@ -10,7 +10,6 @@ export interface Experience {
 export interface Project {
   id: number;
   imageLink: string;
-  deployUrl: string;
   appName: string;
   description: string;
   techStacks: string[];
@@ -21,6 +20,7 @@ export interface Project {
 export interface TechLogo {
   id: number;
   link: string;
+  label: string;
 }
 
 export const experienceData: Experience[] = [
@@ -116,7 +116,6 @@ export const projectsData: Project[] = [
   {
     id: 1,
     imageLink: "/images/payment-project.png",
-    deployUrl: "https://payment-system-project-app.herokuapp.com/m",
     appName: "Payment-System",
     description:
       "A full Stack MERN Application to mimic a 'Funds Transfer' like Venmo, by using JWT for authentication and authorization.",
@@ -137,7 +136,6 @@ export const projectsData: Project[] = [
   {
     id: 2,
     imageLink: "/images/movie-search-project.png",
-    deployUrl: "",
     appName: "Movie Search App",
     description:
       "Movie Search Application is a responsive React App using api from OMDb API.",
@@ -156,7 +154,6 @@ export const projectsData: Project[] = [
   {
     id: 3,
     imageLink: "/images/lego-project.png",
-    deployUrl: "",
     appName: "LEGO-Main-Product-Review",
     description:
       "My first fullstack application with small team. I am responsible for the review component.",
@@ -167,7 +164,6 @@ export const projectsData: Project[] = [
   {
     id: 4,
     imageLink: "/images/calculator.png",
-    deployUrl: "",
     appName: "Mini-App-Calculator",
     description: "Building a mini-app-calculator for fun.",
     techStacks: ["React", "TypeScript"],
@@ -177,16 +173,16 @@ export const projectsData: Project[] = [
 ];
 
 export const logo: TechLogo[] = [
-  { id: 1, link: "/images/html-5.svg" },
-  { id: 2, link: "/images/css-logo.svg" },
-  { id: 3, link: "/images/js-logo.svg" },
-  { id: 4, link: "/images/typescript.svg" },
-  { id: 5, link: "/images/react.svg" },
-  { id: 6, link: "/images/nextjs.svg" },
-  { id: 7, link: "/images/nodejs.svg" },
-  { id: 8, link: "/images/express.svg" },
-  { id: 9, link: "/images/mysql.svg" },
-  { id: 10, link: "/images/mongodb.svg" },
-  { id: 11, link: "/images/git.svg" },
-  { id: 12, link: "/images/aws.svg" },
+  { id: 1, link: "/images/html-5.svg", label: "HTML5" },
+  { id: 2, link: "/images/css-logo.svg", label: "CSS3" },
+  { id: 3, link: "/images/js-logo.svg", label: "JavaScript" },
+  { id: 4, link: "/images/typescript.svg", label: "TypeScript" },
+  { id: 5, link: "/images/react.svg", label: "React" },
+  { id: 6, link: "/images/nextjs.svg", label: "Next.js" },
+  { id: 7, link: "/images/nodejs.svg", label: "Node.js" },
+  { id: 8, link: "/images/express.svg", label: "Express" },
+  { id: 9, link: "/images/mysql.svg", label: "MySQL" },
+  { id: 10, link: "/images/mongodb.svg", label: "MongoDB" },
+  { id: 11, link: "/images/git.svg", label: "Git" },
+  { id: 12, link: "/images/aws.svg", label: "AWS" },
 ];

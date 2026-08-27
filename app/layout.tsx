@@ -1,8 +1,10 @@
+import type { Metadata, Viewport } from "next";
+import type { ReactNode } from "react";
 import "../styles/globals.css";
 import { ThemeProvider } from "../components/ThemeProvider";
 
-export const metadata = {
-  title: "Nick Fan — Full-Stack Software Engineer",
+export const metadata: Metadata = {
+  title: "Nick Fan - Full-Stack Software Engineer",
   description:
     "Portfolio of Nick Fan, a full-stack software engineer working with React, Node.js, and TypeScript.",
   keywords: [
@@ -17,7 +19,7 @@ export const metadata = {
   ],
   metadataBase: new URL("https://nickfan.dev"),
   openGraph: {
-    title: "Nick Fan — Full-Stack Software Engineer",
+    title: "Nick Fan - Full-Stack Software Engineer",
     description:
       "Portfolio of Nick Fan, a full-stack software engineer working with React, Node.js, and TypeScript.",
     url: "https://nickfan.dev",
@@ -26,13 +28,13 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Nick Fan — Full-Stack Software Engineer",
+    title: "Nick Fan - Full-Stack Software Engineer",
     description:
       "Portfolio of Nick Fan, a full-stack software engineer working with React, Node.js, and TypeScript.",
   },
 };
 
-export const viewport = {
+export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
 };
@@ -61,7 +63,7 @@ const themeInitScript = `
 })();
 `;
 
-export default function RootLayout({ children }) {
+export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning>
       <body suppressHydrationWarning>

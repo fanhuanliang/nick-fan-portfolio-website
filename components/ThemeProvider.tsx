@@ -1,23 +1,41 @@
 "use client";
 
-import { createContext, useContext, useEffect, useState } from "react";
+import {
+  createContext,
+  ReactNode,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
 
-const ThemeContext = createContext(null);
+type Theme = "light" | "dark";
+
+type ThemeContextValue = {
+  theme: Theme;
+  toggleTheme: () => void;
+};
+
+const ThemeContext = createContext<ThemeContextValue | null>(null);
 const STORAGE_KEY = "theme";
 
-export function ThemeProvider({ children }) {
-  const [theme, setTheme] = useState("light");
+function isTheme(value: string | null): value is Theme {
+  return value === "light" || value === "dark";
+}
+
+export function ThemeProvider({ children }: { children: ReactNode }) {
+  const [theme, setTheme] = useState<Theme>("light");
 
   useEffect(() => {
+    document.documentElement.dataset.themeReady = "true";
     setTheme(
       document.documentElement.classList.contains("dark") ? "dark" : "light"
     );
 
     const stored = localStorage.getItem(STORAGE_KEY);
-    if (stored === "light" || stored === "dark") return;
+    if (isTheme(stored)) return;
 
     const mql = window.matchMedia("(prefers-color-scheme: dark)");
-    const onChange = (e) => {
+    const onChange = (e: MediaQueryListEvent) => {
       if (localStorage.getItem(STORAGE_KEY)) return;
       const next = e.matches ? "dark" : "light";
       document.documentElement.classList.toggle("dark", next === "dark");

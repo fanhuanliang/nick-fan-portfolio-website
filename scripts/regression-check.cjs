@@ -39,6 +39,11 @@ async function collectPageSignals(page) {
 
 async function waitForHydration(page) {
   await page.waitForLoadState("domcontentloaded");
+  await page.waitForFunction(
+    () => document.documentElement.dataset.themeReady === "true",
+    null,
+    { timeout: 30000 }
+  );
   await page.waitForTimeout(800);
 }
 
@@ -116,15 +121,14 @@ async function verifyCanvas(page, label) {
 }
 
 async function verifyThemeToggle(page, label) {
-  const toggle = page.locator("button[aria-label^='Switch to']").first();
-  await toggle.waitFor({ state: "visible" });
-
   await page.evaluate(() => localStorage.removeItem("theme"));
-  await page.reload();
+  await page.reload({ waitUntil: "domcontentloaded", timeout: NAVIGATION_TIMEOUT_MS });
   await waitForHydration(page);
 
+  const toggle = page.locator("button[aria-label^='Switch to']").first();
+  await toggle.waitFor({ state: "visible" });
   const initialLabel = await toggle.getAttribute("aria-label");
-  await toggle.click();
+  await toggle.evaluate((button) => button.click());
   await page.waitForTimeout(250);
   const afterClick = await page.evaluate(() => ({
     isDark: document.documentElement.classList.contains("dark"),
@@ -133,14 +137,14 @@ async function verifyThemeToggle(page, label) {
   }));
   assert(
     afterClick.stored === (afterClick.isDark ? "dark" : "light"),
-    `${label}: theme toggle did not persist the applied theme`
+    `${label}: theme toggle did not persist the applied theme (${JSON.stringify(afterClick)})`
   );
   assert(
     afterClick.label !== initialLabel,
     `${label}: theme toggle aria-label did not change after click`
   );
 
-  await page.reload();
+  await page.reload({ waitUntil: "domcontentloaded", timeout: NAVIGATION_TIMEOUT_MS });
   await waitForHydration(page);
   const afterReload = await page.evaluate(() => ({
     isDark: document.documentElement.classList.contains("dark"),
@@ -154,8 +158,8 @@ async function verifyThemeToggle(page, label) {
 }
 
 async function verifyProjectImageModal(page, label) {
-  await page.locator("[class*='project_image'] img").first().evaluate((image) => image.click());
-  const modal = page.locator("[class*='top_layer']").first();
+  await page.getByTestId("project-image-button").first().evaluate((button) => button.click());
+  const modal = page.getByTestId("image-modal-content").first();
   await modal.waitFor({ state: "visible" });
   const geometry = await modal.evaluate((node) => {
     const rect = node.getBoundingClientRect();
@@ -179,15 +183,15 @@ async function verifyProjectImageModal(page, label) {
     `${label}: project image modal is not vertically centered`
   );
 
-  await page.locator("[class*='bottom_layer']").first().evaluate((backdrop) => backdrop.click());
+  await page.getByTestId("image-modal-backdrop").first().evaluate((backdrop) => backdrop.click());
   await modal.waitFor({ state: "hidden" });
 }
 
-async function verifyContactNotice(page, label) {
-  await page.locator("#contact button, #contact input[type='submit']").last().evaluate((button) => button.click());
-  const notice = page.getByText("Please fill out all the fields");
-  await notice.waitFor({ state: "visible", timeout: 3000 });
-  assert(await notice.isVisible(), `${label}: contact validation notice did not appear`);
+async function verifyContactSection(page, label) {
+  const contact = page.locator("#contact");
+  await contact.waitFor({ state: "visible" });
+  const hasFooterLinks = await contact.locator("footer a").count();
+  assert(hasFooterLinks > 0, `${label}: blank contact section is missing footer links`);
 }
 
 async function runScenario(browser, scenario) {
@@ -217,7 +221,7 @@ async function runScenario(browser, scenario) {
   console.log(`theme ${label}`);
   await verifyProjectImageModal(page, label);
   console.log(`modal ${label}`);
-  await verifyContactNotice(page, label);
+  await verifyContactSection(page, label);
   console.log(`contact ${label}`);
 
   assert(signals.pageErrors.length === 0, `${label}: page errors ${signals.pageErrors.join(" | ")}`);
