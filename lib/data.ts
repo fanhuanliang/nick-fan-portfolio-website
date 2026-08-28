@@ -5,6 +5,12 @@ export interface Experience {
   duration: string;
   location: string;
   descriptions: string[];
+  keyProjects?: ExperienceProject[];
+}
+
+export interface ExperienceProject {
+  title: string;
+  descriptions: string[];
 }
 
 export interface Project {
@@ -27,7 +33,7 @@ export const experienceData: Experience[] = [
   {
     id: 111,
     company: "Dell Technologies",
-    jobTitle: "Software Engineer",
+    jobTitle: "Senior Software Engineer",
     duration: "September 2021 - Present",
     location: "San Francisco, CA",
     descriptions: [
@@ -36,9 +42,25 @@ export const experienceData: Experience[] = [
       "Diagnose and resolve application, API, database, authentication, and deployment issues across development and production environments.",
       "Collaborate with product owners, architects, QA engineers, and developers to refine requirements, review designs, and deliver production releases.",
       "Contribute to CI/CD and deployment workflows in GitLab, including automated build and security-scanning pipelines.",
-      "Migrated a legacy F# backend to C#/.NET, restructuring functionality into independently maintained services.",
-      "Contributed to migrating a legacy Angular/SharePoint application to React microfrontends and .NET services.",
-      "Built reusable UI components and application patterns to improve maintainability and support continued modernization.",
+    ],
+    keyProjects: [
+      {
+        title: "Enterprise Backend Modernization",
+        descriptions: [
+          "Migrated a legacy F# backend to C#/.NET, restructuring functionality into independently maintained services.",
+          "Implemented and enhanced REST APIs and business logic supporting enterprise application workflows.",
+          "Contributed to CI/CD, code reviews, architectural discussions, troubleshooting, and performance improvements.",
+        ],
+      },
+      {
+        title: "Legacy Application Migration to React and Microservices",
+        descriptions: [
+          "Contributed to migrating a legacy Angular/SharePoint application to React microfrontends and .NET services.",
+          "Implemented functionality across React UI, .NET APIs, and database layers while maintaining continuity with existing enterprise workflows.",
+          "Resolved API and data-model integration challenges across dependent systems during the migration.",
+          "Built reusable UI components and application patterns to improve maintainability and support continued modernization.",
+        ],
+      },
     ],
   },
 ];
