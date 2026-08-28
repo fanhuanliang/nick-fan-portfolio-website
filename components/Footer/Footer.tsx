@@ -10,7 +10,7 @@ const iconLinks = [
     icon: github,
   },
   {
-    href: "https://www.linkedin.com/in/fanhuanliang/",
+    href: "https://www.linkedin.com/in/nick-fan/",
     label: "LinkedIn",
     icon: linkedIn,
   },

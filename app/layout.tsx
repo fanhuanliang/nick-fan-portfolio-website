@@ -56,7 +56,7 @@ const personJsonLd = {
   url: "https://nickfan.dev",
   sameAs: [
     "https://github.com/fanhuanliang",
-    "https://www.linkedin.com/in/fanhuanliang/",
+    "https://www.linkedin.com/in/nick-fan/",
   ],
 };
 
