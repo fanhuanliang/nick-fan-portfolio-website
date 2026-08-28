@@ -191,7 +191,7 @@ Additional verification: `npm run build` was re-run from the project root after 
 
 #### 5i. Footer
 - ✅ Convert `Footer.tsx`
-- ✅ Update social links (GitHub, LinkedIn, email)
+- ✅ Update social links (GitHub, LinkedIn)
 
 ### Final Verification
 Verified 2026-08-26:
