@@ -11,7 +11,6 @@ const navLinks: NavLink[] = [
   { href: "#about", label: "About" },
   { href: "#experience", label: "Experience" },
   { href: "#projects", label: "Portfolio" },
-  { href: "#contact", label: "Contact" },
   {
     href: "https://github.com/fanhuanliang",
     label: "Github",
