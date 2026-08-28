@@ -12,7 +12,7 @@ type ProjectProps = {
 };
 
 const buttonClasses =
-  "m-[5px] inline-block cursor-pointer rounded-md border border-[#84bbf3] bg-[#bddbfa] bg-[linear-gradient(to_bottom,#bddbfa_5%,#80b5ea_100%)] px-6 py-1.5 font-[Arial] text-sm font-bold text-white shadow-[inset_0_1px_0_0_#dcecfb] [text-shadow:0_1px_0_#528ecc] hover:bg-[#80b5ea] hover:bg-[linear-gradient(to_bottom,#80b5ea_5%,#bddbfa_100%)] active:relative active:top-px focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white";
+  "m-[5px] inline-block cursor-pointer rounded-md border border-[#1f5f99] bg-[#256da8] px-6 py-1.5 font-[Arial] text-sm font-bold text-white shadow-[inset_0_1px_0_0_rgba(255,255,255,0.24)] hover:bg-[#1f5f99] active:relative active:top-px focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#7facfa]";
 
 const Project = ({ projectData }: ProjectProps) => {
   const [isOpenVideo, setIsOpenVideo] = useState(false);
@@ -27,7 +27,7 @@ const Project = ({ projectData }: ProjectProps) => {
       >
         <button
           type="button"
-          className="relative cursor-pointer border-0 bg-transparent p-0"
+          className="relative cursor-pointer border-0 bg-transparent p-0 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#7facfa]"
           data-testid="project-image-button"
           onClick={() => setIsOpenImg(true)}
           aria-label={`Open ${projectData.appName} image preview`}
@@ -63,8 +63,14 @@ const Project = ({ projectData }: ProjectProps) => {
           <button className={buttonClasses} type="button" onClick={() => setIsOpenVideo(true)}>
             Video
           </button>
-          <a href={projectData.github} target="_blank" rel="noopener noreferrer">
-            <span className={buttonClasses}>Git</span>
+          <a
+            className={buttonClasses}
+            href={projectData.github}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={`Open ${projectData.appName} GitHub repository`}
+          >
+            Git
           </a>
         </div>
       </motion.article>
@@ -72,6 +78,7 @@ const Project = ({ projectData }: ProjectProps) => {
         open={isOpenImg}
         onClose={() => setIsOpenImg(false)}
         urlImg={projectData.imageLink}
+        title={projectData.appName}
       />
       <Popup
         open={isOpenVideo}

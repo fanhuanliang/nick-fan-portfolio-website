@@ -61,6 +61,7 @@
   }
 
   #main,
+  #content,
   #about,
   #experience,
   #projects,
@@ -110,5 +111,26 @@
     padding-left: 15px;
     margin-right: auto;
     margin-left: auto;
+  }
+
+  .skip-link {
+    position: fixed;
+    left: 12px;
+    top: -80px;
+    z-index: 1200;
+    border-radius: 4px;
+    background: var(--bg-surface);
+    color: var(--text-primary);
+    padding: 8px 12px;
+    font-weight: 700;
+    box-shadow: 0 2px 8px var(--shadow-hard);
+    transition: top 120ms ease;
+  }
+
+  .skip-link:focus,
+  .skip-link:focus-visible {
+    top: 12px;
+    outline: 3px solid #7facfa;
+    outline-offset: 3px;
   }
 }

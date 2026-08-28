@@ -8,12 +8,17 @@ import Projects from "../components/Projects/Projects";
 export default function Home() {
   return (
     <>
+      <a className="skip-link" href="#content">
+        Skip to main content
+      </a>
       <Main />
       <Navbar />
-      <AboutMe />
-      <Experience />
-      <Projects />
-      <Contact />
+      <main id="content" tabIndex={-1}>
+        <AboutMe />
+        <Experience />
+        <Projects />
+        <Contact />
+      </main>
     </>
   );
 }
