@@ -24,14 +24,19 @@ export default function AboutMe() {
             About Me
           </h1>
           <p className="w-full px-5 py-5 font-['Comic_Sans_MS',Verdana,Arial,Tahoma,serif] text-[1.05rem] leading-[1.55em] min-[601px]:pr-[120px] min-[601px]:pt-4 min-[601px]:text-[1.25rem]">
-            I am a full-stack software engineer, and pursuing my passion for tech
-            through a full-time opportunity as a Software Engineer. I like solving
-            problems and delivering clean code on time. I particularly enjoy
-            working on the front end, especially with React, and love the
-            satisfaction that comes with bringing an idea to life.
+            I&apos;m a full-stack software engineer with experience building and
+            modernizing enterprise applications using React, TypeScript, C#,
+            .NET, REST APIs, and SQL. I enjoy solving complex problems,
+            building reliable software, and continuously improving how
+            applications are designed and delivered.
             <br />
-            When I am not coding, I enjoy playing basketball, cooking, traveling,
-            and playing guitar.
+            I&apos;m passionate about technology and enjoy exploring new tools,
+            frameworks, and emerging areas such as AI and machine learning.
+            I&apos;m always looking for opportunities to learn, experiment, and
+            apply new ideas to real-world software development.
+            <br />
+            Outside of coding, I enjoy running, swimming, cycling, playing
+            guitar and drums, and working out.
           </p>
         </div>
       </div>
