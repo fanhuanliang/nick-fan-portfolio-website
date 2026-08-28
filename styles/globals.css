@@ -1,39 +1,136 @@
-html,
-body {
-  padding: 0;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+@layer theme, base, components, utilities;
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/utilities.css" layer(utilities);
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  color-scheme: light;
+  --bg-page: #ffffff;
+  --bg-about: rgba(225, 225, 225, 0.94);
+  --bg-surface: #ffffff;
+  --bg-hero: #333333;
+  --bg-nav: #58555a;
+  --bg-nav-mobile: rgb(114, 111, 107);
+  --bg-band: #59585d;
+  --bg-contact: #3a3a3a;
+  --bg-notice: rgb(9, 248, 252);
+  --text-primary: #000000;
+  --text-secondary: rgb(102, 96, 96);
+  --text-inverse: #ffffff;
+  --text-notice: rgb(13, 1, 250);
+  --border-color: grey;
+  --border-subtle: #ffffff;
+  --shadow-color: rgba(249, 249, 255, 0.2);
+  --shadow-hard: #000000;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
+:root.dark {
+  color-scheme: dark;
+  --bg-page: #121212;
+  --bg-about: #1c1c1c;
+  --bg-surface: #242424;
+  --bg-hero: #1a1a1a;
+  --bg-nav: #2c2a2e;
+  --bg-nav-mobile: #3a3838;
+  --bg-band: #2e2d30;
+  --bg-contact: #202020;
+  --bg-notice: rgb(9, 248, 252);
+  --text-primary: #f2f2f2;
+  --text-secondary: #b3b3b3;
+  --text-inverse: #f2f2f2;
+  --text-notice: rgb(13, 1, 250);
+  --border-color: #4d4d4d;
+  --border-subtle: rgba(255, 255, 255, 0.12);
+  --shadow-color: rgba(0, 0, 0, 0.4);
+  --shadow-hard: rgba(255, 255, 255, 0.25);
 }
 
-* {
-  box-sizing: border-box;
+@layer base {
+  html,
+  body {
+    padding: 0;
+    margin: 0;
+    font-family: var(--font-lato), "Helvetica Neue", Arial, Helvetica,
+      sans-serif;
+    background-color: var(--bg-page);
+    color: var(--text-primary);
+  }
 
-}
+  html {
+    scroll-behavior: smooth;
+  }
 
-.h1, .h2, .h3, h1, h2, h3 {
+  #main,
+  #content,
+  #about,
+  #experience,
+  #projects,
+  #contact {
+    scroll-margin-top: 38px;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  .h1,
+  .h2,
+  .h3,
+  h1,
+  h2,
+  h3 {
     margin-top: 20px;
     margin-bottom: 10px;
-}
+  }
 
-.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
+  .h1,
+  .h2,
+  .h3,
+  .h4,
+  .h5,
+  .h6,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     font-weight: 500;
     line-height: 1.1;
-}
+    font-family: var(--font-lato), "Helvetica Neue", Arial, Helvetica,
+      sans-serif;
+  }
 
-/* .row {
-  margin-right: -15px;
-  margin-left: -15px; 
-} */
-
-.container-fluid {
+  .container-fluid {
     padding-right: 15px;
     padding-left: 15px;
     margin-right: auto;
     margin-left: auto;
+  }
+
+  .skip-link {
+    position: fixed;
+    left: 12px;
+    top: -80px;
+    z-index: 1200;
+    border-radius: 4px;
+    background: var(--bg-surface);
+    color: var(--text-primary);
+    padding: 8px 12px;
+    font-weight: 700;
+    box-shadow: 0 2px 8px var(--shadow-hard);
+    transition: top 120ms ease;
+  }
+
+  .skip-link:focus,
+  .skip-link:focus-visible {
+    top: 12px;
+    outline: 3px solid #7facfa;
+    outline-offset: 3px;
+  }
 }
