@@ -35,7 +35,7 @@ export const experienceData: Experience[] = [
     company: "Dell Technologies",
     jobTitle: "Senior Software Engineer",
     duration: "September 2021 - Present",
-    location: "San Francisco, CA",
+    location: "San Jose, CA",
     descriptions: [
       "Develop and maintain enterprise web applications using React, TypeScript, C#, .NET, SQL, and REST APIs across front-end and back-end systems.",
       "Design and integrate REST APIs connecting multiple enterprise applications and data sources.",
