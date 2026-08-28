@@ -13,11 +13,6 @@ const navLinks: NavLink[] = [
   { href: "#projects", label: "Portfolio" },
   { href: "#contact", label: "Contact" },
   {
-    href: "https://drive.google.com/file/d/1iZnY5zWHX_LSa9xGx9nKpmPQ3F64zuX-/view?usp=sharing",
-    label: "Resume",
-    external: true,
-  },
-  {
     href: "https://github.com/fanhuanliang",
     label: "Github",
     external: true,
