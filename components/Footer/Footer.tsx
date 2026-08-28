@@ -29,7 +29,7 @@ export default function Footer() {
               rel="noopener noreferrer"
               aria-label={link.label}
             >
-              <Image className="h-[34px] w-[34px]" src={link.icon} alt="" />
+              <Image className="footer-icon h-[34px] w-[34px]" src={link.icon} alt="" />
             </a>
           ))}
         </div>
