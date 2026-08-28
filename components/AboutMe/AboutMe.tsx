@@ -11,11 +11,12 @@ export default function AboutMe() {
       <div className="flex flex-col items-center min-[601px]:flex-row min-[601px]:items-stretch">
         <div className="relative mx-auto mt-8 h-[120px] w-[120px] flex-[0_0_120px] overflow-hidden rounded-full min-[601px]:m-[34px] min-[601px]:h-[150px] min-[601px]:w-[150px] min-[601px]:flex-[0_0_150px]">
           <Image
-            src="/images/IMG_1857.png"
+            src="/images/IMG_7527.JPG"
             alt="Nick Fan"
             fill
             sizes="(max-width: 600px) 120px, 150px"
             className="object-cover"
+            style={{ objectPosition: "50% 75%"}}
           />
         </div>
         <div className="mx-0 my-4 px-[15px] min-[601px]:mx-auto min-[601px]:my-[34px]">
