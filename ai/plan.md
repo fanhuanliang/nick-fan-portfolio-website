@@ -239,17 +239,23 @@ Verified 2026-08-26:
 
 ---
 
-## Phase 7 — Accessibility Audit
+## Phase 7 — Accessibility Audit ✅ Complete
 
 **Goal:** WCAG 2.1 AA compliance.
 
 ### Steps
-1. Add skip-to-main-content link at top of page
-2. Ensure all interactive elements have visible focus rings (Tailwind `focus-visible:ring-*`)
-3. Add `aria-label` to icon-only buttons (hamburger, scroll arrow, theme toggle)
-4. Verify color contrast ratios in both light and dark modes
-5. Test keyboard navigation through all sections and forms
-6. Add `alt` text audit for all images
+1. ✅ Added a skip-to-main-content link at the top of the page, targeting a new `main#content` landmark that wraps the primary post-hero content.
+2. ✅ Ensured interactive elements have visible focus styles, including the skip link, project image buttons, project action links/buttons, modal close controls, nav links, theme toggle, and footer links.
+3. ✅ Audited icon-only controls and links: hamburger, scroll arrow, theme toggle, modal close buttons, project image preview buttons, and footer icon links all have accessible names.
+4. ✅ Verified sampled color contrast in both light and dark modes through the regression script; also replaced the low-contrast project action gradient with a darker accessible button color.
+5. ✅ Tested keyboard navigation for the skip link and modal flows; project image/video modals now focus their close buttons on open and close with Escape.
+6. ✅ Added automated alt-attribute coverage checks and improved project modal preview alt text.
+
+### Final Verification
+- `npm run build` passed; `/` remains a static App Router route at 158 kB first-load JS.
+- `next lint` passed with no warnings/errors (run through the bundled Node executable because the sandbox PATH did not expose `npm` consistently).
+- `tsc --noEmit` passed.
+- `npm run test:regression` equivalent passed via bundled Node: desktop light, desktop dark, mobile light, mobile dark, and system-preference dark. The regression now checks landmarks, skip-link focus visibility, unnamed controls, missing image alt attributes, sampled contrast, image modal dialog semantics/focus/Escape, and video modal dialog semantics/focus/Escape.
 
 ---
 
@@ -281,7 +287,7 @@ Verified 2026-08-26:
 | 4 — Dark Mode | Low | Low | UX polish | ✅ Complete |
 | 5 — Component Rewrite | High | Low | Code quality, maintainability | ✅ Complete |
 | 6 — Performance & SEO | Low | Low | Discoverability | ✅ Complete |
-| 7 — Accessibility | Low | Low | Inclusivity, professionalism | Not started |
+| 7 — Accessibility | Low | Low | Inclusivity, professionalism | ✅ Complete |
 | 8 — Deploy | Low | Low | Live site | Not started |
 
-**Recommended next step:** Start Phase 7 Accessibility Audit.
+**Recommended next step:** Start Phase 8 Deploy.

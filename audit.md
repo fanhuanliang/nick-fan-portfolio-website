@@ -176,3 +176,23 @@ A leftover `next dev` process from an earlier session was holding `.next/trace` 
 
 ### Remaining Follow-Ups
 Phase 7 owns accessibility work (skip link, focus rings, `aria-label` audit, contrast check, keyboard nav, `alt` text audit, possible `<dialog>`-based modal focus management). Phase 8 owns validating the JSON-LD against Google's Rich Results Test, which needs a public URL that doesn't exist until after deploy.
+
+## 2026-08-28 — Phase 7 accessibility audit
+
+### Scope
+1. Added a visible-on-focus skip link that targets a new `main#content` landmark wrapping the primary post-hero sections.
+2. Changed the sticky navigation wrapper to a semantic `header`.
+3. Tightened focus visibility for project image buttons, project Git links, project action buttons, modal close controls, and the skip link.
+4. Replaced the low-contrast project action gradient with a darker accessible button treatment.
+5. Added dialog semantics, initial close-button focus, Escape-to-close behavior, and explicit accessible labels for project image and video modals.
+6. Improved project image modal alt text by passing the project title into `PopImage`.
+7. Expanded `scripts/regression-check.cjs` to verify landmarks, skip-link focus visibility, unnamed controls, missing image alt attributes, sampled contrast, and modal keyboard behavior across desktop/mobile and light/dark scenarios.
+
+### Verification
+- `npm run build` passed; `/` remains static at 158 kB first-load JS.
+- `next lint` passed with no warnings/errors when invoked via bundled Node.
+- `tsc --noEmit` passed.
+- Regression passed: desktop light, desktop dark, mobile light, mobile dark, and system-preference dark.
+
+### Notes
+The sandbox PATH did not consistently expose the `npm` shim for non-approved commands, so lint, typecheck, and regression were invoked directly with the bundled Node executable from the Codex workspace runtime. This did not change the app code or package configuration.
