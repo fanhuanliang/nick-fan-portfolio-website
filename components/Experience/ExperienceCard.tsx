@@ -13,7 +13,6 @@ const ExperienceCard = ({ item }: ExperienceCardProps) => {
 
   return (
     <article className="relative mx-auto my-[18px] max-w-[980px] rounded-lg border border-[var(--border-subtle)] bg-[var(--bg-surface)] p-4 text-[var(--text-primary)] min-[601px]:p-[18px]">
-      <div className="absolute -left-[31px] top-7 hidden h-4 w-4 rounded-full border-2 border-[var(--text-inverse)] bg-[#7facfafa] min-[901px]:block" />
       <h1 className="mb-[10px] mt-5 text-[1.6rem] leading-[1.1] min-[601px]:text-[2rem]">
         {company}
       </h1>
