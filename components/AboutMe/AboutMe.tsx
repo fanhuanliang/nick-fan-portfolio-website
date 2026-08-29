@@ -8,7 +8,7 @@ export default function AboutMe() {
       className="min-h-screen bg-[linear-gradient(var(--bg-about),var(--bg-about))] bg-fixed bg-center bg-no-repeat py-[2%]"
       id="about"
     >
-      <div className="flex flex-col items-center min-[601px]:flex-row min-[601px]:items-stretch">
+      <div className="mx-auto flex max-w-[1040px] flex-col items-center min-[601px]:flex-row min-[601px]:items-stretch">
         <div className="relative mx-auto mt-8 h-[120px] w-[120px] flex-[0_0_120px] overflow-hidden rounded-full min-[601px]:m-[34px] min-[601px]:h-[150px] min-[601px]:w-[150px] min-[601px]:flex-[0_0_150px]">
           <Image
             src="/images/IMG_7527.JPG"
@@ -40,7 +40,7 @@ export default function AboutMe() {
           </p>
         </div>
       </div>
-      <div className="flex flex-col content-center justify-center text-center">
+      <div className="mx-auto flex max-w-[1040px] flex-col content-center justify-center text-center">
         <h1 className="mb-[10px] mt-5 pb-3 text-[2.2rem] leading-[1.1]">
           Technologies
         </h1>
