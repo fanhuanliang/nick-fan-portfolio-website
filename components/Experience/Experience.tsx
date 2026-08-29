@@ -10,7 +10,7 @@ const Experience = () => {
       <h1 className="mb-[10px] mt-5 text-center text-[2rem] leading-[1.1] min-[601px]:text-[2.4rem]">
         Work Experience
       </h1>
-      <div className="relative mx-auto max-w-[1160px]">
+      <div className="relative mx-auto max-w-[1040px]">
         {experienceData.map((item) => (
           <ExperienceCard key={item.id} item={item} />
         ))}

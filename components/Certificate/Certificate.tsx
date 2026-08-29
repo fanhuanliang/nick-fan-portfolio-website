@@ -11,7 +11,7 @@ export default function Certificate() {
       <h1 className="mb-[10px] mt-5 text-center text-[2rem] leading-[1.1] min-[601px]:text-[2.4rem]">
         Certificate
       </h1>
-      <div className="mx-auto grid max-w-[1160px] grid-cols-1 items-center gap-6 pt-6 min-[901px]:grid-cols-[minmax(0,0.42fr)_minmax(0,0.58fr)] min-[901px]:gap-8">
+      <div className="mx-auto grid max-w-[1040px] grid-cols-1 items-center gap-6 pt-6 min-[901px]:grid-cols-[minmax(0,0.42fr)_minmax(0,0.58fr)] min-[901px]:gap-8">
         <div className="max-w-[520px]">
           <p className="mb-3 text-sm font-bold uppercase tracking-[0.12em] text-[#7facfafa]">
             MCCOMBS SCHOOL OF BUSINESS
