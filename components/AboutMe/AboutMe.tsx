@@ -5,7 +5,7 @@ import { logo } from "../../lib/data";
 export default function AboutMe() {
   return (
     <div
-      className="min-h-screen bg-[linear-gradient(var(--bg-about),var(--bg-about))] bg-fixed bg-center bg-no-repeat py-[2%]"
+      className="min-h-screen bg-[var(--bg-band)] bg-fixed bg-center bg-no-repeat py-[2%] text-[var(--text-inverse)]"
       id="about"
     >
       <div className="mx-auto flex max-w-[1040px] flex-col items-center min-[601px]:flex-row min-[601px]:items-stretch">
