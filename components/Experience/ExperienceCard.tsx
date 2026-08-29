@@ -12,7 +12,7 @@ const ExperienceCard = ({ item }: ExperienceCardProps) => {
   const { company, jobTitle, duration, location, descriptions, keyProjects } = item;
 
   return (
-    <article className="relative mx-auto my-[18px] max-w-[980px] rounded-lg border border-[var(--border-subtle)] bg-[var(--bg-surface)] p-4 text-[var(--text-primary)] min-[601px]:p-[18px]">
+    <article className="relative mx-auto my-[18px] max-w-[1160px] rounded-lg border border-[var(--border-subtle)] bg-[var(--bg-surface)] p-4 text-[var(--text-primary)] min-[601px]:p-[18px]">
       <h1 className="mb-[10px] mt-5 text-[1.6rem] leading-[1.1] min-[601px]:text-[2rem]">
         {company}
       </h1>
