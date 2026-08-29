@@ -1,4 +1,5 @@
 import AboutMe from "../components/AboutMe/AboutMe";
+import Certificate from "../components/Certificate/Certificate";
 import Contact from "../components/Contact/Contact";
 import Experience from "../components/Experience/Experience";
 import Main from "../components/Main/Main";
@@ -16,6 +17,7 @@ export default function Home() {
       <main id="content" tabIndex={-1}>
         <AboutMe />
         <Experience />
+        <Certificate />
         <Projects />
         <Contact />
       </main>
