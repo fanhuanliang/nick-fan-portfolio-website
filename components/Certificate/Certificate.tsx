@@ -5,7 +5,7 @@ const verificationUrl = "https://vrfy.digital/index.php?key=zmtwrhai";
 export default function Certificate() {
   return (
     <section
-      className="bg-[var(--bg-band)] px-4 py-[34px] text-[var(--text-inverse)] min-[601px]:px-8 min-[601px]:py-[46px]"
+      className="min-h-screen bg-[var(--bg-band)] px-4 py-[34px] text-[var(--text-inverse)] min-[601px]:px-8 min-[601px]:py-[46px]"
       id="certificate"
     >
       <h1 className="mb-[10px] mt-5 text-center text-[2rem] leading-[1.1] min-[601px]:text-[2.4rem]">
